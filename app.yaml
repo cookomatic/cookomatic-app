@@ -13,13 +13,9 @@ handlers:
   upload: www/index.html
   secure: always
 
-- url: /assets
-  static_dir: www/assets
-  secure: always
-
-- url: /build
-  static_dir: www/build
-  secure: always
+- url: /(.*)
+  static_files: www/\1
+  upload: www/.*
 
 skip_files:
 - ^(.*/)?#.*#$
