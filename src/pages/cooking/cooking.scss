@@ -1,0 +1,13 @@
+page-cooking {
+  .wrap-normal {
+    white-space: normal;
+  }
+
+  .slide {
+    overflow-y: hidden;
+    transition: max-height 1s ease;
+  }
+  .center {
+    text-align: center;
+  }
+}

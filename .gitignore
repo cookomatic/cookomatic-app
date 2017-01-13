@@ -35,3 +35,19 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# Ionic files
+.tmp
+www
+temp/
+.temp
+.sass-cache
+<%= appPath %>/bower_components
+coverage
+platforms
+plugins
+*.swp
+*.swo
+*.log
+*.DS_Store
+app/scripts/configuration.js
