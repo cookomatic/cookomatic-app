@@ -1,0 +1,21 @@
+runtime: python27
+api_version: 1
+threadsafe: yes
+service: default
+
+handlers:
+- url: /admin/.*
+  script: google.appengine.ext.admin.application
+  login: admin
+
+- url: /
+  static_files: cookomatic_app/index.html
+  upload: cookomatic_app/index.html
+  secure: always
+
+skip_files:
+- ^(.*/)?#.*#$
+- ^(.*/)?.*~$
+- ^(.*/)?.*\.py[co]$
+- ^(.*/)?.*/RCS/.*$
+- ^(.*/)?\..*$
