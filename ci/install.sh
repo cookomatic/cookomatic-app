@@ -19,3 +19,6 @@ openssl aes-256-cbc -K $encrypted_c74b22e30ebe_key -iv $encrypted_c74b22e30ebe_i
 
 # Here we use the decrypted service account credentials to authenticate the command line tool
 gcloud auth activate-service-account --key-file ./ci/client-secret.json
+
+echo -e "\n## Installing Ionic client"
+npm install -g ionic

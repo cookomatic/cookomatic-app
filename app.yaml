@@ -9,8 +9,16 @@ handlers:
   login: admin
 
 - url: /
-  static_files: cookomatic_app/index.html
-  upload: cookomatic_app/index.html
+  static_files: www/index.html
+  upload: www/index.html
+  secure: always
+
+- url: /assets
+  static_dir: www/assets
+  secure: always
+
+- url: /build
+  static_dir: www/build
   secure: always
 
 skip_files:
@@ -19,3 +27,4 @@ skip_files:
 - ^(.*/)?.*\.py[co]$
 - ^(.*/)?.*/RCS/.*$
 - ^(.*/)?\..*$
+- ^node_modules$
