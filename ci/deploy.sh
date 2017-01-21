@@ -7,5 +7,5 @@ then
     gcloud config set project project-cookomatic
 
     echo -e "\n### Deploying to App Engine"
-    gcloud -q app deploy app.yaml --promote
+    gcloud -q app deploy app.yaml --promote --verbosity=info
 fi
