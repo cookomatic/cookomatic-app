@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e "\n## Installing App Engine Python SDK"
-
-if [ ! -d "${GAE_PYTHONPATH}" ]; then
-    python ./ci/fetch_gae_sdk.py $(dirname "${GAE_PYTHONPATH}");
-fi
+echo -e "\n## Installing Google Cloud SDK"
 
 # If the SDK is not already cached, download it and unpack it
 if [ ! -d ${HOME}/google-cloud-sdk/bin ]; then
