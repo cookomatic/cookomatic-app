@@ -174,7 +174,7 @@ export class MealOverview {
     this.storageCtrl = storage;
 
     events.subscribe("dish:add", (items) => {
-      this.dishes = this.dishes.concat(items[0]);
+      this.dishes = this.dishes.concat(items);
       storage.set("dishes", this.dishes);
     });
   }
