@@ -6,7 +6,8 @@ import { Events } from 'ionic-angular';
 import { DishInfo } from '../dish-info/dish-info'
 
 function itemInArray(array, item) {
-  return array.some(function(e) {return e.title === item.title})
+  // return array.some(function(e) {return e.title === item.title})
+  return false;
 }
 
 @Component({

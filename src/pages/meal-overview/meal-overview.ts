@@ -11,8 +11,8 @@ function loadData(storage){
   var entrees = [
     {
       "title": "Roast Chicken with Thyme",
-      "img": "assets/roast-chicken.jpg",
-      "imgThumb": "assets/roast-chicken-thumb.jpg",
+      "img": "assets/img/roast-chicken.jpg",
+      "imgThumb": "assets/img/roast-chicken-thumb.jpg",
       "cookTime": 90,
       "ingredients": [
         "2 lemons",
@@ -33,8 +33,8 @@ function loadData(storage){
     },
     {
       "title": "Smoky Grilled Pork Chops",
-      "img": "assets/porkchops.jpg",
-      "imgThumb": "assets/porkchops-thumb.jpg",
+      "img": "assets/img/porkchops.jpg",
+      "imgThumb": "assets/img/porkchops-thumb.jpg",
       "cookTime": 25,
       "ingredients": [
         "1 tablespoon seasoned salt",
@@ -60,8 +60,8 @@ function loadData(storage){
   var sides = [
     {
       "title": "Jalepeno Fries",
-      "img": "assets/jalapeno-fries.png",
-      "imgThumb": "assets/jalapeno-fries-thumb.png",
+      "img": "assets/img/jalapeno-fries.png",
+      "imgThumb": "assets/img/jalapeno-fries-thumb.png",
       "cookTime": 10,
       "ingredients": [
         "2 cups vegetable oil",
@@ -79,8 +79,8 @@ function loadData(storage){
     },
     {
       "title": "Baked Kale Chips",
-      "img": "assets/kale-chips.jpg",
-      "imgThumb": "assets/kale-chips-thumb.jpg",
+      "img": "assets/img/kale-chips.jpg",
+      "imgThumb": "assets/img/kale-chips-thumb.jpg",
       "cookTime": 10,
       "ingredients": [
         "1 bunch kale",
@@ -99,8 +99,8 @@ function loadData(storage){
   var desserts = [
     {
       "title": "Peanut Blossoms",
-      "img": "assets/peanut-blossom.jpg",
-      "imgThumb": "assets/peanut-blossom-thumb.jpg",
+      "img": "assets/img/peanut-blossom.jpg",
+      "imgThumb": "assets/img/peanut-blossom-thumb.jpg",
       "cookTime": 10,
       "ingredients": [
         "1 cup shortening",
@@ -125,8 +125,8 @@ function loadData(storage){
     },
     {
       "title": "Best Brownies",
-      "img": "assets/brownies.jpg",
-      "imgThumb": "assets/brownies-thumb.jpg",
+      "img": "assets/img/brownies.jpg",
+      "imgThumb": "assets/img/brownies-thumb.jpg",
       "cookTime": 35,
       "ingredients": [
         "1/2 cup butter",
