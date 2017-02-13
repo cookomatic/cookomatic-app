@@ -53,7 +53,6 @@ export class Cookomatic {
     { title: 'Menu', component: MenuPage },
     { title: 'Settings', component: SettingsPage },
     { title: 'Search', component: SearchPage },
-
     { title: 'Meal Overview', component: MealOverview }
   ]
 

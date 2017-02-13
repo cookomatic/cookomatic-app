@@ -6,8 +6,7 @@ import { Events } from 'ionic-angular';
 import { DishInfo } from '../dish-info/dish-info'
 
 function itemInArray(array, item) {
-  // return array.some(function(e) {return e.title === item.title})
-  return false;
+  return array.some(function(e) {return e.title === item.title})
 }
 
 @Component({
@@ -45,7 +44,7 @@ export class AddDishes {
       })
 
       events.subscribe("dish:select", (item) => {
-        this.selectedDishes.push(item[0])
+        this.selectedDishes.push(item)
       });
   }
 
