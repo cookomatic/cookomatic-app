@@ -5,7 +5,6 @@ import { Storage } from '@ionic/storage';
 
 import { Cookomatic } from './app.component';
 
-import { CardsPage } from '../pages/cards/cards';
 import { ContentPage } from '../pages/content/content';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
@@ -51,7 +50,6 @@ export function provideSettings(storage: Storage) {
  */
 let pages = [
   Cookomatic,
-  CardsPage,
   ContentPage,
   LoginPage,
   SignupPage,

@@ -5,7 +5,6 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 import { Settings } from '../providers/providers';
 
 import { FirstRunPage } from '../pages/pages';
-import { CardsPage } from '../pages/cards/cards';
 import { ContentPage } from '../pages/content/content';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
@@ -45,7 +44,6 @@ export class Cookomatic {
   pages: any[] = [
     { title: 'Tutorial', component: TutorialPage },
     { title: 'Welcome', component: WelcomePage },
-    { title: 'Cards', component: CardsPage },
     { title: 'Content', component: ContentPage },
     { title: 'Login', component: LoginPage },
     { title: 'Signup', component: SignupPage },
