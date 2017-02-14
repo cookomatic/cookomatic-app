@@ -1,5 +1,4 @@
 import { NgModule, ErrorHandler } from '@angular/core';
-import { Http } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
