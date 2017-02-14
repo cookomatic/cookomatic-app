@@ -44,7 +44,7 @@ export class AddDishes {
       })
 
       events.subscribe("dish:select", (item) => {
-        this.selectedDishes.push(item[0])
+        this.selectedDishes.push(item)
       });
   }
 
