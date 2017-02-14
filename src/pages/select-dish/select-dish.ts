@@ -6,10 +6,10 @@ import { Items } from '../../providers/providers';
 import { Item } from '../../models/item';
 
 @Component({
-  selector: 'page-search',
-  templateUrl: 'search.html'
+  selector: 'select-dish',
+  templateUrl: 'select-dish.html'
 })
-export class SearchPage {
+export class SelectDish {
   currentItems: any = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public items: Items) {}
