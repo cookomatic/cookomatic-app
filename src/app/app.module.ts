@@ -60,12 +60,12 @@ let pages = [
   ItemCreatePage,
   MenuPage,
   SettingsPage,
-
   MealOverview,
   AddDishes,
   DishInfo,
   Cooking,
   SelectDish,
+  MealComplete,
 ];
 
 export function declarations() {
