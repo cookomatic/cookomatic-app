@@ -13,7 +13,8 @@ import { WelcomePage } from '../pages/welcome/welcome';
 import { ListMasterPage } from '../pages/list-master/list-master';
 import { MenuPage } from '../pages/menu/menu';
 import { SettingsPage } from '../pages/settings/settings';
-import { SearchPage } from '../pages/search/search';
+import { SelectDish } from '../pages/select-dish/select-dish';
+import { MealComplete } from '../pages/meal-complete/meal-complete';
 
 import { MealOverview } from '../pages/meal-overview/meal-overview';
 
@@ -50,8 +51,9 @@ export class Cookomatic {
     { title: 'Master Detail', component: ListMasterPage },
     { title: 'Menu', component: MenuPage },
     { title: 'Settings', component: SettingsPage },
-    { title: 'Search', component: SearchPage },
-    { title: 'Meal Overview', component: MealOverview }
+    { title: 'Meal Overview', component: MealOverview },
+    { title: 'Select Dish', component: SelectDish },
+    { title: 'Meal Complete', component: MealComplete }
   ]
 
   constructor(platform: Platform, settings: Settings, config: Config) {
