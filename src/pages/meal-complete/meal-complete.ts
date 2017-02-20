@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Events } from 'ionic-angular';
+import { MainPage } from '../../pages/pages';
 
 @Component({
   selector: 'meal-complete',
@@ -13,7 +14,9 @@ export class MealComplete {
     public navParams: NavParams,
     public events: Events
   ) {
-    this.item = navParams.get('item');
+   
   }
-
+goToMainPage() {
+  this.navCtrl.push(MainPage);
+}
 }

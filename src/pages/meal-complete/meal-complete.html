@@ -5,34 +5,13 @@
 </ion-header>
 
 <ion-content padding>
-  <h1>{{item.title}}</h1>
-  <img src="{{item.img}}" />
-  <p>Cook Time: {{item.cookTime}} minutes</p>
-
-  <h3>Ingredients</h3>
-  <ul>
-    <li *ngFor="let ingredient of item.ingredients">
-      {{ingredient}}
-    </li>
-  </ul>
-
-  <h3>Steps</h3>
-  <ol>
-    <li *ngFor="let step of item.steps">
-      <strong>{{step[0]}}:</strong>
-        <ul>
-          <li *ngFor="let substep of step[1]">
-            {{substep}}
-          </li>
-        </ul>
-    </li>
-  </ol>
-
-  <div class="spacer"></div>
-</ion-content>
+  <div class="centered">
+    <h1>Congratulations!</h1>
+    <h2>You successfully made a dish!</h2>
+    <img src="assets/img/greenCheckmark.png" alt="Checkmark" />
 
 <ion-footer>
   <ion-toolbar>
-    <button ion-button full (click)="addToMeal($event, item)">Add to Meal</button>
+    <button ion-button full (click)="goToMainPage()">Make Another Meal</button>
   </ion-toolbar>
 </ion-footer>
