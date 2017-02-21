@@ -4,7 +4,8 @@ import { NavController } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { Events } from 'ionic-angular';
 
-import { AddDishes } from '../add-dishes/add-dishes';
+//import { AddDishes } from '../add-dishes/add-dishes';
+import { SelectDish } from '../select-dish/select-dish';
 import { Cooking } from '../cooking/cooking';
 
 @Component({

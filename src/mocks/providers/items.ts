@@ -17,40 +17,35 @@ export class Items {
   constructor(public http: Http) {
     let items = [
       {
-         "name": "Burt Bear",
-         "profilePic": "assets/img/speakers/bear.jpg",
-         "about": "Burt is a Bear."
+         "name": "Roast Chicken with Thyme",
+         "profilePic": "assets/img/roast-chicken.jpg",
+         "about": "Yummy Roast Chicken"
        },
        {
-         "name": "Charlie Cheetah",
-         "profilePic": "assets/img/speakers/cheetah.jpg",
-         "about": "Charlie is a Cheetah."
+         "name": "Smoky Grilled Pork Chops",
+         "profilePic": "assets/img/porkchops.jpg",
+         "about": "Tasty Grilled Pork Chops"
        },
        {
-         "name": "Donald Duck",
-         "profilePic": "assets/img/speakers/duck.jpg",
-         "about": "Donald is a Duck."
+         "name": "Jalepeno Fries",
+         "profilePic": "assets/img/jalapeno-fries.png",
+         "about": "Spicy Jalapeno Fries"
        },
        {
-         "name": "Eva Eagle",
-         "profilePic": "assets/img/speakers/eagle.jpg",
-         "about": "Eva is an Eagle."
+         "name": "Baked Kale Chips",
+         "profilePic": "assets/img/kale-chips.jpg",
+         "about": "Delicious Kale Chips"
        },
        {
-         "name": "Ellie Elephant",
-         "profilePic": "assets/img/speakers/elephant.jpg",
-         "about": "Ellie is an Elephant."
+         "name": "Peanut Blossoms",
+         "profilePic": "assets/img/peanut-blossom.jpg",
+         "about": "The best Peanut Blossoms"
        },
        {
-         "name": "Molly Mouse",
-         "profilePic": "assets/img/speakers/mouse.jpg",
-         "about": "Molly is a Mouse."
+         "name": "Best Brownies",
+         "profilePic": "assets/img/brownies.jpg",
+         "about": "Great Brownies"
        },
-       {
-         "name": "Paul Puppy",
-         "profilePic": "assets/img/speakers/puppy.jpg",
-         "about": "Paul is a Puppy."
-       }
      ];
 
      for(let item of items) {
