@@ -1,6 +1,12 @@
 <ion-header>
 
   <ion-navbar>
+    <ion-buttons end>
+      <button ion-button (click)="dismiss()">
+        <span color="primary" showWhen="ios">Done</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>Select a Dish</ion-title>
   </ion-navbar>
 

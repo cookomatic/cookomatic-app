@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
 
 //import { ItemDetailPage } from '../item-detail/item-detail';
 import { DishInfo } from '../dish-info/dish-info';
@@ -13,7 +13,11 @@ import { Item } from '../../models/item';
 export class SelectDish {
   currentItems: any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public items: Items) {}
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public viewCtrl: ViewController,
+    public items: Items) {}
 
   /**
    * Perform a service for the proper items.
@@ -36,6 +40,10 @@ export class SelectDish {
     this.navCtrl.push(DishInfo, {
       item: item
     });
+  }
+
+  dismiss() {
+    this.viewCtrl.dismiss();
   }
 
 }
