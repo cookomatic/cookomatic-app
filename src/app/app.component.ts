@@ -54,8 +54,8 @@ export class Cookomatic {
     { title: 'Settings', component: SettingsPage },
     { title: 'Meal Overview', component: MealOverview },
     { title: 'Select Dish', component: SelectDish },
-    { title: 'Meal Complete', component: MealComplete }
-    { title: 'Dish Added', component: DishAdded }
+    { title: 'Meal Complete', component: MealComplete },
+    { title: 'Dish Added', component: DishAdded },
   ]
 
   constructor(platform: Platform, settings: Settings, config: Config) {
