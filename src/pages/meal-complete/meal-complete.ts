@@ -16,7 +16,7 @@ export class MealComplete {
   ) {
    
   }
-goToMainPage() {
-  this.navCtrl.push(MainPage);
-}
+  goToMainPage() {
+    this.navCtrl.push(MainPage);
+  }
 }
