@@ -21,6 +21,7 @@ import { DishInfo } from '../pages/dish-info/dish-info';
 import { Cooking } from '../pages/cooking/cooking';
 import { SelectDish } from '../pages/select-dish/select-dish';
 import { MealComplete } from '../pages/meal-complete/meal-complete';
+import { DishAdded } from '../pages/dish-added/dish-added';
 
 import { User } from '../providers/user';
 import { Api } from '../providers/api';
@@ -66,6 +67,7 @@ let pages = [
   Cooking,
   SelectDish,
   MealComplete,
+  DishAdded
 ];
 
 export function declarations() {
