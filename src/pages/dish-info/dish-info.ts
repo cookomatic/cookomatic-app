@@ -17,7 +17,8 @@ export class DishInfo {
   }
 
   addToMeal(event, item) {
-    this.events.publish("dish:select", item);
+    //this.events.publish("dish:select", item);
+    this.navCtrl.push(DishInfo, item)
     this.navCtrl.pop();
   }
 }
