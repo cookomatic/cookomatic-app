@@ -15,6 +15,7 @@ import { MenuPage } from '../pages/menu/menu';
 import { SettingsPage } from '../pages/settings/settings';
 import { SelectDish } from '../pages/select-dish/select-dish';
 import { MealComplete } from '../pages/meal-complete/meal-complete';
+import { DishAdded } from '../pages/dish-added/dish-added';
 
 import { MealOverview } from '../pages/meal-overview/meal-overview';
 
@@ -54,6 +55,7 @@ export class Cookomatic {
     { title: 'Meal Overview', component: MealOverview },
     { title: 'Select Dish', component: SelectDish },
     { title: 'Meal Complete', component: MealComplete }
+    { title: 'Dish Added', component: DishAdded }
   ]
 
   constructor(platform: Platform, settings: Settings, config: Config) {
