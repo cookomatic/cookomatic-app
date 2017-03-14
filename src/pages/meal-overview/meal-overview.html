@@ -20,26 +20,20 @@
             </ion-card-content>
           </ion-card>
         </ion-col>
-
-        <ion-col width-50>
-          <ion-card (click)="addDish($event)">
-            <ion-card-content>
-              <ion-icon class="large-icon" name="add-circle"></ion-icon>
-              <p>Tap to add dishes</p>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
       </ion-row>
     </ion-grid>
 
     <h3 *ngIf="dishes.length > 0">Ingredients</h3>
     <ion-list>
       <ul *ngFor="let item of dishes">
-        <li *ngFor="let ingredient of item.ingredients">
+        <li *ngFor="let ingredient of meal.ingredients">
           {{ingredient}}
         </li>
       </ul>
     </ion-list>
+
+    <h3 *ngIf="dishes.length > 0">Estimated Cooking Time</h3>
+    <p *ngIf="dishes.length > 0">{{meal.estimated_time}}</p>
 </ion-content>
 
 <ion-footer>

@@ -40,4 +40,11 @@ export class LoginPage {
       toast.present();
     });
   }
+
+  navigateToMain() {
+    this.navCtrl.setRoot(MainPage, {}, {
+      animate: true,
+      direction: 'forward'
+    });
+  }
 }
