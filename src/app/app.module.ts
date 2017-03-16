@@ -6,7 +6,6 @@ import { Cookomatic } from './app.component';
 
 import { ContentPage } from '../pages/content/content';
 import { LoginPage } from '../pages/login/login';
-import { SignupPage } from '../pages/signup/signup';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { ListMasterPage } from '../pages/list-master/list-master';
@@ -53,7 +52,6 @@ let pages = [
   Cookomatic,
   ContentPage,
   LoginPage,
-  SignupPage,
   TutorialPage,
   WelcomePage,
   ListMasterPage,

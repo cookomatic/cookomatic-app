@@ -4,7 +4,6 @@ import { NavController, Nav } from 'ionic-angular';
 import { ContentPage } from '../content/content';
 
 import { LoginPage } from '../login/login';
-import { SignupPage } from '../signup/signup';
 
 /*
   Generated class for the Menu page.
@@ -28,7 +27,6 @@ export class MenuPage {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Sign in', component: LoginPage },
-      { title: 'Signup', component: SignupPage }
     ];
   }
 

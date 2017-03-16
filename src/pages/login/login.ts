@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController, ToastController, Platform } from 'ionic-angular';
 
 import { MainPage } from '../../pages/pages';
 import { User } from '../../providers/user';
@@ -22,23 +22,23 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController,
               public user: User,
-              public toastCtrl: ToastController) {
+              public toastCtrl: ToastController,
+              public platform: Platform) {
       this.loginErrorString = "Error logging in.";
+      this.platform = platform;
   }
 
-  // Attempt to login in through our User service
-  doLogin() {
-    this.user.login(this.account).subscribe((resp) => {
-      this.navCtrl.push(MainPage);
-    }, (err) => {
-      this.navCtrl.push(MainPage);
-      // Unable to log in
-      let toast = this.toastCtrl.create({
-        message: this.loginErrorString,
-        duration: 3000,
-        position: 'top'
-      });
-      toast.present();
+  navigateToMain() {
+    this.navCtrl.setRoot(MainPage, {}, {
+      animate: true,
+      direction: 'forward'
     });
+  }
+
+  launch() {
+    // this.platform.ready().then(() => {
+    //   open("https://www.google.com", "_self", "location=true");
+    // });
+    this.navCtrl.push(MainPage);
   }
 }
