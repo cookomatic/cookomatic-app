@@ -7,7 +7,6 @@ import { Settings } from '../providers/providers';
 import { FirstRunPage } from '../pages/pages';
 import { ContentPage } from '../pages/content/content';
 import { LoginPage } from '../pages/login/login';
-import { SignupPage } from '../pages/signup/signup';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { ListMasterPage } from '../pages/list-master/list-master';
@@ -47,7 +46,6 @@ export class Cookomatic {
     { title: 'Welcome', component: WelcomePage },
     { title: 'Content', component: ContentPage },
     { title: 'Login', component: LoginPage },
-    { title: 'Signup', component: SignupPage },
     { title: 'Master Detail', component: ListMasterPage },
     { title: 'Menu', component: MenuPage },
     { title: 'Settings', component: SettingsPage },
