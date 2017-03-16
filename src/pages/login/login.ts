@@ -27,22 +27,6 @@ export class LoginPage {
       this.platform = platform;
   }
 
-  // Attempt to login in through our User service
-  // doLogin() {
-  //   this.user.login(this.account).subscribe((resp) => {
-  //     this.navCtrl.push(MainPage);
-  //   }, (err) => {
-  //     this.navCtrl.push(MainPage);
-  //     // Unable to log in
-  //     let toast = this.toastCtrl.create({
-  //       message: this.loginErrorString,
-  //       duration: 3000,
-  //       position: 'top'
-  //     });
-  //     toast.present();
-  //   });
-  // }
-
   navigateToMain() {
     this.navCtrl.setRoot(MainPage, {}, {
       animate: true,

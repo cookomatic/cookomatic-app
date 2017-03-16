@@ -71,5 +71,4 @@ export class MealOverview {
   startCooking() {
     this.navCtrl.push(Cooking, {"dishes": this.dishes});
   }
-
 }
