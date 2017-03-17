@@ -13,7 +13,7 @@ import { Cooking } from '../cooking/cooking';
 })
 export class MealOverview {
   dishes: any;
-  meal: any;
+  schedule: any;
   constructor(
     public api: Api,
     public navCtrl: NavController,
@@ -21,12 +21,11 @@ export class MealOverview {
     public events: Events
   ) {
     // Initial value
-    this.meal = {'ingredients': [], 'estimated_time': 0};
+    this.schedule = {'ingredients': [], 'estimated_time': 0};
 
     this.dishes = [];
     events.subscribe("dish:select", (items) => {
       this.dishes = this.dishes.concat(items);
-      console.log(this.dishes);
       this.genMealSchedule();
     });
 
@@ -65,13 +64,14 @@ export class MealOverview {
     seq
       .map(res => res.json())
       .subscribe(res => {
-        this.meal = res;
+        this.schedule = res;
       }, err => {
         console.error('ERROR', err);
       })
+
   }
 
   startCooking() {
-    this.navCtrl.push(Cooking, {"dishes": this.dishes});
+    this.navCtrl.push(Cooking, {"schedule": this.schedule});
   }
 }
