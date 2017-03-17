@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { Api } from '../../providers/api';
 
 //import { ItemDetailPage } from '../item-detail/item-detail';
 import { DishInfo } from '../dish-info/dish-info';
@@ -15,25 +16,32 @@ export class SelectDish {
   currentItems: any = [];
 
   constructor(
+    public api: Api,
     public navCtrl: NavController,
     public navParams: NavParams,
-    public viewCtrl: ViewController,
-    public items: Items) {}
+    public viewCtrl: ViewController,) {
+      this.loadItems("");
+    }
 
   /**
    * Perform a service for the proper items.
    */
   getItems(ev) {
     let val = ev.target.value;
-    if(!val || !val.trim()) {
-      this.currentItems = [];
-      return;
-    }
-    this.currentItems = this.items.query({
-      name: val
-    });
+
+    this.loadItems(val)
   }
 
+  loadItems(val) {
+    let seq = this.api.get('dish/search?search=' + val)
+    seq
+      .map(res => res.json())
+      .subscribe(res => {
+        this.currentItems = res;
+      }, err => {
+        console.error('ERROR', err);
+      })
+  }
   /**
    * Navigate to the detail page for this item.
    */

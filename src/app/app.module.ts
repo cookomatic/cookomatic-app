@@ -8,14 +8,11 @@ import { ContentPage } from '../pages/content/content';
 import { LoginPage } from '../pages/login/login';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
-import { ListMasterPage } from '../pages/list-master/list-master';
 import { ItemCreatePage } from '../pages/item-create/item-create';
-import { ItemDetailPage } from '../pages/item-detail/item-detail';
 import { MenuPage } from '../pages/menu/menu';
 import { SettingsPage } from '../pages/settings/settings';
 
 import { MealOverview } from '../pages/meal-overview/meal-overview';
-import { AddDishes } from '../pages/add-dishes/add-dishes';
 import { DishInfo } from '../pages/dish-info/dish-info';
 import { Cooking } from '../pages/cooking/cooking';
 import { SelectDish } from '../pages/select-dish/select-dish';
@@ -25,7 +22,7 @@ import { DishAdded } from '../pages/dish-added/dish-added';
 import { User } from '../providers/user';
 import { Api } from '../providers/api';
 import { Settings } from '../providers/settings';
-import { Items } from '../mocks/providers/items';
+//import { Items } from '../mocks/providers/items';
 
 export function provideSettings(storage: Storage) {
   /**
@@ -54,13 +51,10 @@ let pages = [
   LoginPage,
   TutorialPage,
   WelcomePage,
-  ListMasterPage,
-  ItemDetailPage,
   ItemCreatePage,
   MenuPage,
   SettingsPage,
   MealOverview,
-  AddDishes,
   DishInfo,
   Cooking,
   SelectDish,
@@ -82,7 +76,7 @@ export function providers() {
 
     User,
     Api,
-    Items,
+    //Items,
 
     { provide: Settings, useFactory: provideSettings, deps: [ Storage ] },
     // Keep this to enable Ionic's runtime error handling during development
