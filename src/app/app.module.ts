@@ -8,7 +8,6 @@ import { ContentPage } from '../pages/content/content';
 import { LoginPage } from '../pages/login/login';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
-import { ItemCreatePage } from '../pages/item-create/item-create';
 import { MenuPage } from '../pages/menu/menu';
 import { SettingsPage } from '../pages/settings/settings';
 
@@ -22,7 +21,6 @@ import { DishAdded } from '../pages/dish-added/dish-added';
 import { User } from '../providers/user';
 import { Api } from '../providers/api';
 import { Settings } from '../providers/settings';
-//import { Items } from '../mocks/providers/items';
 
 export function provideSettings(storage: Storage) {
   /**
@@ -51,7 +49,6 @@ let pages = [
   LoginPage,
   TutorialPage,
   WelcomePage,
-  ItemCreatePage,
   MenuPage,
   SettingsPage,
   MealOverview,

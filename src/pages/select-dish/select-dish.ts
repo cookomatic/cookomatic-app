@@ -2,10 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { Api } from '../../providers/api';
 
-//import { ItemDetailPage } from '../item-detail/item-detail';
 import { DishInfo } from '../dish-info/dish-info';
-import { Items } from '../../providers/providers';
-import { Item } from '../../models/item';
 import { MainPage } from '../../pages/pages';
 
 @Component({
@@ -45,7 +42,7 @@ export class SelectDish {
   /**
    * Navigate to the detail page for this item.
    */
-  openItem(item: Item) {
+  openItem(item: any) {
     this.navCtrl.push(DishInfo, {
       item: item
     });
