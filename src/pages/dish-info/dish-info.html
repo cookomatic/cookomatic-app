@@ -6,23 +6,23 @@
 
 <ion-content padding>
   <h1>{{item.name}}</h1>
-  <img src="{{item.img}}" />
-  <p>Estimated Cook Time: {{item.cookTime}} minutes</p>
+  <img src="{{item.img}}"  height="350" width="400" align="middle"/>
+  <h4>Estimated Cook Time: {{item.total_time}} minutes</h4>
 
-  <h3>Ingredients</h3>
+  <h4>Ingredients</h4>
   <ul>
     <li *ngFor="let ingredient of item.ingredients">
       {{ingredient}}
     </li>
   </ul>
 
-  <h3>Steps</h3>
+  <h4>Steps</h4>
   <ol>
     <li *ngFor="let step of item.steps">
-      <strong>{{step[0]}}:</strong>
+      <strong>{{step.name}}:</strong>
         <ul>
-          <li *ngFor="let substep of step[1]">
-            {{substep}}
+          <li>
+            {{step.description}}
           </li>
         </ul>
     </li>

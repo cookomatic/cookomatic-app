@@ -25,15 +25,14 @@
 
     <h3 *ngIf="dishes.length > 0">Ingredients</h3>
     <ion-list>
-      <ul *ngFor="let item of dishes">
+      <ul>
         <li *ngFor="let ingredient of schedule.ingredients">
           {{ingredient}}
         </li>
       </ul>
     </ion-list>
 
-    <h3 *ngIf="dishes.length > 0">Estimated Cooking Time</h3>
-    <p *ngIf="dishes.length > 0">{{schedule.estimated_time}}</p>
+    <h3 *ngIf="dishes.length > 0">Estimated Cooking Time: {{schedule.estimated_time}} minutes </h3>
 </ion-content>
 
 <ion-footer>
