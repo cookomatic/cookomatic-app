@@ -5,6 +5,7 @@ import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { DishInfo } from '../dish-info/dish-info';
 import { Items } from '../../providers/providers';
 import { Item } from '../../models/item';
+import { MainPage } from '../../pages/pages';
 
 @Component({
   selector: 'select-dish',
@@ -46,4 +47,7 @@ export class SelectDish {
     this.viewCtrl.dismiss();
   }
 
+  goToMainPage() {
+    this.navCtrl.push(MainPage);
+  }
 }
