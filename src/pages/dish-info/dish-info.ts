@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Events } from 'ionic-angular';
 
+import { DishAdded } from '../dish-added/dish-added'
+
 @Component({
   selector: 'page-dish-info',
   templateUrl: 'dish-info.html'
@@ -18,6 +20,9 @@ export class DishInfo {
 
   addToMeal(event, item) {
     this.events.publish("dish:select", item);
-    this.navCtrl.pop();
+    this.navCtrl.setRoot(DishAdded, item, {
+      animate: true,
+      direction: 'forward'
+    });
   }
 }

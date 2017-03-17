@@ -39,6 +39,6 @@ export class LoginPage {
     // this.platform.ready().then(() => {
     //   open("https://www.google.com", "_self", "location=true");
     // });
-    this.navCtrl.push(MainPage);
+    this.navigateToMain();
   }
 }

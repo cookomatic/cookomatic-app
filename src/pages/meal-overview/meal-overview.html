@@ -10,9 +10,9 @@
       <ion-row wrap>
         <ion-col width-50 *ngFor="let item of dishes; let i = index">
           <ion-card>
-            <img src="{{item.imgThumb}}" />
+            <img src="{{item.img_thumb}}" />
             <ion-card-content>
-              <p>{{item.title}}</p>
+              <p>{{item.name}}</p>
               <button ion-button small icon-left item-right outline color="danger" (click)="removeDish($event, item, i)">
                 <ion-icon name="trash" color="danger"></ion-icon>
                 Remove
@@ -25,15 +25,14 @@
 
     <h3 *ngIf="dishes.length > 0">Ingredients</h3>
     <ion-list>
-      <ul *ngFor="let item of dishes">
-        <li *ngFor="let ingredient of meal.ingredients">
+      <ul>
+        <li *ngFor="let ingredient of schedule.ingredients">
           {{ingredient}}
         </li>
       </ul>
     </ion-list>
 
-    <h3 *ngIf="dishes.length > 0">Estimated Cooking Time</h3>
-    <p *ngIf="dishes.length > 0">{{meal.estimated_time}}</p>
+    <h3 *ngIf="dishes.length > 0">Estimated Cooking Time: {{schedule.estimated_time}} minutes </h3>
 </ion-content>
 
 <ion-footer>
