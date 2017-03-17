@@ -19,8 +19,10 @@ export class DishInfo {
   }
 
   addToMeal(event, item) {
-    //this.events.publish("dish:select", item);
-    this.navCtrl.push(DishAdded, item)
-    //this.navCtrl.pop();
+    this.events.publish("dish:select", item);
+    this.navCtrl.setRoot(DishAdded, item, {
+      animate: true,
+      direction: 'forward'
+    });
   }
 }

@@ -4,7 +4,6 @@ import { NavController } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { Events } from 'ionic-angular';
 
-//import { AddDishes } from '../add-dishes/add-dishes';
 import { SelectDish } from '../select-dish/select-dish';
 import { Cooking } from '../cooking/cooking';
 
@@ -25,16 +24,19 @@ export class MealOverview {
     this.meal = {'ingredients': [], 'estimated_time': 0};
 
     this.dishes = [];
-    events.subscribe("dish:add", (items) => {
+    events.subscribe("dish:select", (items) => {
       this.dishes = this.dishes.concat(items);
+      console.log(this.dishes);
       this.genMealSchedule();
     });
 
-    this.addDish();
+    if (this.dishes.length == 0){
+      this.addDish();
+    }
   }
 
   addDish() {
-    let modal = this.modalCtrl.create(AddDishes);
+    let modal = this.modalCtrl.create(SelectDish);
     modal.present();
   }
 

@@ -14,16 +14,18 @@ export class DishAdded {
 
   constructor(
     public navCtrl: NavController,
+    public viewCtrl: ViewController,
     public events: Events
   ) {}
 
   goToMainPage() {
-    this.navCtrl.push(MainPage);
+    this.viewCtrl.dismiss();
   }
 
   goBackToSearch(event, item) {
-    this.navCtrl.push(SelectDish, {
-      item: item
+    this.navCtrl.setRoot(SelectDish, {}, {
+      animate: true,
+      direction: 'forward'
     });
   }
 
