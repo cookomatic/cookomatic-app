@@ -10,7 +10,7 @@
       <ion-row wrap>
         <ion-col width-50 *ngFor="let item of dishes; let i = index">
           <ion-card>
-            <img src="{{item.imgThumb}}" />
+            <img src="{{item.img_thumb}}" />
             <ion-card-content>
               <p>{{item.name}}</p>
               <button ion-button small icon-left item-right outline color="danger" (click)="removeDish($event, item, i)">
