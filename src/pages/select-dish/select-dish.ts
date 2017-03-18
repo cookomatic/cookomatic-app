@@ -16,7 +16,7 @@ export class SelectDish {
     public api: Api,
     public navCtrl: NavController,
     public navParams: NavParams,
-    public viewCtrl: ViewController,) {
+    public viewCtrl: ViewController) {
       this.loadItems("");
     }
 
@@ -25,7 +25,6 @@ export class SelectDish {
    */
   getItems(ev) {
     let val = ev.target.value;
-
     this.loadItems(val)
   }
 
@@ -44,7 +43,7 @@ export class SelectDish {
    */
   openItem(item: any) {
     this.navCtrl.push(DishInfo, {
-      item: item
+      item_id: item['id']
     });
   }
 
