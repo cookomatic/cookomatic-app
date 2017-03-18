@@ -10,9 +10,8 @@
     <h2>You added this dish to your meal!</h2>
     <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
 
-    <ion-grid>
-      <ion-row>
-        <ion-col col-6><button ion-button full (click)="goBackToSearch()"> Select Another Dish</button></ion-col>
-        <ion-col col-6>  <button ion-button full (click)="goToMainPage()">Finished Adding Dishes</button></ion-col>
-      </ion-row>
-    </ion-grid>
+
+  <ion-row>
+    <ion-col width-50> <button ion-button full (click)="goBackToSearch()"> Select Another Dish</button> </ion-col>
+    <ion-col width-50>  <button ion-button full (click)="goToMainPage()">Finished Adding Dishes</button> </ion-col>
+  </ion-row>
