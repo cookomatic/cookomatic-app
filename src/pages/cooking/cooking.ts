@@ -7,7 +7,7 @@ import { ToastController } from 'ionic-angular';
 function startCooking(toastCtrl){
   let toast = toastCtrl.create({
     message: 'Cooking timer has started!',
-    duration: 3000,
+    duration: 2000,
     position: 'top'
   });
   toast.present();
@@ -48,7 +48,7 @@ export class Cooking {
 
     this.totalTime = this.schedule.estimated_time;
     this.ticks = 0
-    this.timer = Observable.timer(2000,3000);
+    this.timer = Observable.timer(2000, 10000);
     let subscription = this.timer.subscribe(t=> {
       this.ticks = t;
       if (t >= this.totalTime){
