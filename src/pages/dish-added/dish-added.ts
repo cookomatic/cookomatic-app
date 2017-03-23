@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
 import { Events } from 'ionic-angular';
-import { MainPage } from '../../pages/pages';
 
 import { SelectDish } from '../select-dish/select-dish';
 
