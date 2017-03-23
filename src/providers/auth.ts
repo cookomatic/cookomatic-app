@@ -1,0 +1,59 @@
+import { Injectable } from '@angular/core';
+import { Platform } from 'ionic-angular';
+import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
+import { Observable } from 'rxjs/Observable';
+
+// Providers
+import {DataProvider} from './data';
+
+@Injectable()
+export class AuthProvider {
+  user: any;
+  constructor(private af: AngularFire, private data: DataProvider, private platform: Platform) {
+    this.af.database.list('pushTest').push({
+      teste: 'teste'
+    }).then((data) => {
+      console.log(data);
+    });
+  }
+
+  getUserData() {
+    return Observable.create(observer => {
+      this.af.auth.subscribe(authData => {
+        if (authData) {
+          this.data.object('users/' + authData.uid).subscribe(userData => {
+            console.log(userData);
+            this.user = userData;
+            observer.next(userData);
+          });
+        } else {
+          observer.error();
+        }
+      });
+    });
+  }
+
+  loginWithGoogle() {
+    return Observable.create(observer => {
+      this.af.auth.login({
+        provider: AuthProviders.Google,
+        method: AuthMethods.Popup
+      }).then((authData) => {
+        this.af.database.list('users').update(authData.auth.uid, {
+          name: authData.auth.displayName,
+          email: authData.auth.email,
+          provider: 'google',
+          image: authData.auth.photoURL
+        });
+        observer.next();
+      }).catch((error) => {
+        console.info("error", error);
+        observer.error(error);
+      });
+    });
+  }
+
+  logout() {
+    this.af.auth.logout();
+  }
+}

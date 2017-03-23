@@ -18,9 +18,13 @@ import { SelectDish } from '../pages/select-dish/select-dish';
 import { MealComplete } from '../pages/meal-complete/meal-complete';
 import { DishAdded } from '../pages/dish-added/dish-added';
 
+import { AngularFireModule } from 'angularfire2';
+
 import { User } from '../providers/user';
 import { Api } from '../providers/api';
 import { Settings } from '../providers/settings';
+import { DataProvider } from '../providers/data';
+import { AuthProvider } from '../providers/auth';
 
 export function provideSettings(storage: Storage) {
   /**
@@ -70,21 +74,28 @@ export function entryComponents() {
 export function providers() {
   return [
     Storage,
-
     User,
     Api,
-    //Items,
-
+    DataProvider,
+    AuthProvider,
     { provide: Settings, useFactory: provideSettings, deps: [ Storage ] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ];
 }
 
+export const firebaseConfig = {
+  apiKey: 'AIzaSyDcbsUEReGm_dlijVXC1sMCcqKpCsXt0nQ',
+  authDomain: 'ionic2-angularfire-login-14ea3.firebaseapp.com',
+  databaseURL: 'https://ionic2-angularfire-login-14ea3.firebaseio.com',
+  storageBucket: 'ionic2-angularfire-login-14ea3.appspot.com',
+};
+
 @NgModule({
   declarations: declarations(),
   imports: [
     IonicModule.forRoot(Cookomatic),
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   bootstrap: [IonicApp],
   entryComponents: entryComponents(),

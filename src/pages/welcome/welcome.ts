@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { AuthProvider } from '../../providers/auth';
 
 import { LoginPage } from '../login/login';
 
@@ -14,10 +15,16 @@ import { LoginPage } from '../login/login';
   templateUrl: 'welcome.html'
 })
 export class WelcomePage {
+  error: any;
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController, private auth: AuthProvider) {}
 
   login() {
-    this.navCtrl.push(LoginPage);
+    this.auth.loginWithGoogle().subscribe(data => {
+      // console.log(this.auth.getUserData())
+      this.navCtrl.setRoot(LoginPage);
+    }, err => {
+      this.error = err;
+    });
   }
 }
