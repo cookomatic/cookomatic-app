@@ -23,6 +23,8 @@
       </ion-row>
     </ion-grid>
 
+    <p *ngIf="dishes.length > 0"><strong>Estimated Cook Time: </strong>{{schedule.estimated_time}} minutes</p>
+
     <h3 *ngIf="dishes.length > 0">Ingredients</h3>
     <ion-list>
       <ul>
@@ -31,8 +33,6 @@
         </li>
       </ul>
     </ion-list>
-
-    <h3 *ngIf="dishes.length > 0">Estimated Cooking Time: {{schedule.estimated_time}} minutes </h3>
 </ion-content>
 
 <ion-footer>
