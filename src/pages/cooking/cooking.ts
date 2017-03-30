@@ -48,7 +48,7 @@ export class Cooking {
 
     this.totalTime = this.schedule.estimated_time;
     this.ticks = 0
-    this.timer = Observable.timer(2000, 10000);
+    this.timer = Observable.timer(0, 10000);
     let subscription = this.timer.subscribe(t=> {
       this.ticks = t;
       if (t >= this.totalTime){
