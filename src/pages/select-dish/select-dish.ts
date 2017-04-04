@@ -50,8 +50,4 @@ export class SelectDish {
   dismiss() {
     this.viewCtrl.dismiss();
   }
-
-  goToMainPage() {
-    this.navCtrl.push(MainPage);
-  }
 }
