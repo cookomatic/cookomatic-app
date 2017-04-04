@@ -28,14 +28,9 @@
 
 <ion-footer>
   <ion-toolbar>
-    <button ion-button full (click)="doneCooking()">Done Cooking!</button>
-  </ion-toolbar>
-</ion-footer>
-
-<ion-footer>
-  <ion-toolbar>
     <p class="center">
       <strong>Time Elapsed: </strong>{{ticks}} mins | <strong>Time Remaining: </strong> {{totalTime - ticks}} mins
+      <button ion-button block (click)="doneCooking()">Done Cooking!</button>
     </p>
   </ion-toolbar>
 </ion-footer>
