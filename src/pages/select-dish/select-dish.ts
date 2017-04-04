@@ -3,7 +3,6 @@ import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { Api } from '../../providers/api';
 
 import { DishInfo } from '../dish-info/dish-info';
-import { MainPage } from '../../pages/pages';
 
 @Component({
   selector: 'select-dish',
