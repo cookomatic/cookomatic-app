@@ -20,10 +20,17 @@
             </ion-card-content>
           </ion-card>
         </ion-col>
+        <ion-col width-50>
+          <ion-card (click)="addDish()">
+            <ion-card-content>
+              <ion-icon class="large-icon" name="add-circle"></ion-icon>
+              <p>Tap to add dishes</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
       </ion-row>
     </ion-grid>
 
-    <button ion-button (click)="addDish()"> Add another dish </button>
     <p *ngIf="dishes.length > 0"><strong>Estimated Cook Time: </strong>{{schedule.estimated_time}} minutes</p>
 
     <h3 *ngIf="dishes.length > 0">Ingredients</h3>
