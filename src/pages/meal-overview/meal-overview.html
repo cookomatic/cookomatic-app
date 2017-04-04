@@ -23,6 +23,7 @@
       </ion-row>
     </ion-grid>
 
+    <button ion-button (click)="addDish()"> Add another dish </button>
     <p *ngIf="dishes.length > 0"><strong>Estimated Cook Time: </strong>{{schedule.estimated_time}} minutes</p>
 
     <h3 *ngIf="dishes.length > 0">Ingredients</h3>
