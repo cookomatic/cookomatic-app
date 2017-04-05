@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth';
 
-import { LoginPage } from '../login/login';
+import { MainPage } from '../../pages/pages';
 
 /**
  * The Welcome Page is a splash page that quickly describes the app,
@@ -16,15 +16,24 @@ import { LoginPage } from '../login/login';
 })
 export class WelcomePage {
   error: any;
+  user: any;
 
-  constructor(public navCtrl: NavController, private auth: AuthProvider) {}
+  constructor(public navCtrl: NavController, private auth: AuthProvider) {
+    this.user = this.auth.getUser();
+  }
 
   login() {
     this.auth.loginWithGoogle().subscribe(data => {
-      // console.log(this.auth.getUserData())
-      this.navCtrl.setRoot(LoginPage);
+      this.launch();
     }, err => {
       this.error = err;
+    });
+  }
+
+  launch() {
+    this.navCtrl.setRoot(MainPage, {}, {
+      animate: true,
+      direction: 'forward'
     });
   }
 }

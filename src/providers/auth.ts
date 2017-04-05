@@ -10,11 +10,7 @@ import {DataProvider} from './data';
 export class AuthProvider {
   user: any;
   constructor(private af: AngularFire, private data: DataProvider, private platform: Platform) {
-    this.af.database.list('pushTest').push({
-      teste: 'teste'
-    }).then((data) => {
-      console.log(data);
-    });
+    this.user = null;
   }
 
   getUserData() {
@@ -22,7 +18,6 @@ export class AuthProvider {
       this.af.auth.subscribe(authData => {
         if (authData) {
           this.data.object('users/' + authData.uid).subscribe(userData => {
-            console.log(userData);
             this.user = userData;
             observer.next(userData);
           });
@@ -31,6 +26,10 @@ export class AuthProvider {
         }
       });
     });
+  }
+
+  getUser() {
+    return this.user;
   }
 
   loginWithGoogle() {
@@ -55,5 +54,6 @@ export class AuthProvider {
 
   logout() {
     this.af.auth.logout();
+    this.user = null;
   }
 }

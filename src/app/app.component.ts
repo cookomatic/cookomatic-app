@@ -76,10 +76,10 @@ export class Cookomatic {
       // Configure login
       this.auth.getUserData().subscribe(data => {
         this.user = data;
-        console.log(this.user);
       }, err => {
-        this.nav.setRoot(WelcomePage);
+        this.openPage(WelcomePage);
       });
+
     });
   }
 
