@@ -5,7 +5,6 @@ import { Storage } from '@ionic/storage';
 import { Cookomatic } from './app.component';
 
 import { ContentPage } from '../pages/content/content';
-import { LoginPage } from '../pages/login/login';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { MenuPage } from '../pages/menu/menu';
@@ -19,6 +18,7 @@ import { MealComplete } from '../pages/meal-complete/meal-complete';
 import { DishAdded } from '../pages/dish-added/dish-added';
 
 import { AngularFireModule } from 'angularfire2';
+import { firebaseConfig } from '../config/firebase';
 
 import { User } from '../providers/user';
 import { Api } from '../providers/api';
@@ -50,7 +50,6 @@ export function provideSettings(storage: Storage) {
 let pages = [
   Cookomatic,
   ContentPage,
-  LoginPage,
   TutorialPage,
   WelcomePage,
   MenuPage,
@@ -83,13 +82,6 @@ export function providers() {
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ];
 }
-
-export const firebaseConfig = {
-  apiKey: 'AIzaSyDcbsUEReGm_dlijVXC1sMCcqKpCsXt0nQ',
-  authDomain: 'ionic2-angularfire-login-14ea3.firebaseapp.com',
-  databaseURL: 'https://ionic2-angularfire-login-14ea3.firebaseio.com',
-  storageBucket: 'ionic2-angularfire-login-14ea3.appspot.com',
-};
 
 @NgModule({
   declarations: declarations(),

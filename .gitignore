@@ -50,4 +50,5 @@ plugins
 *.swo
 *.log
 *.DS_Store
-app/scripts/configuration.js
+
+src/config

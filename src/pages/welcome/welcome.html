@@ -8,6 +8,6 @@
   </div>
   <div padding>
     <button *ngIf="user.name" ion-button block (click)="launch()">Continue as {{ user.name }}</button>
-    <button *ngIf="!user.name" ion-button block (click)="login()">Login</button>
+    <button *ngIf="!user.name" ion-button block (click)="login()">Sign in with Google</button>
   </div>
 </ion-content>
