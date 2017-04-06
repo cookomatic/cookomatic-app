@@ -7,7 +7,12 @@
     </div>
   </div>
   <div padding>
+    <!-- If logged in -->
     <button *ngIf="user.name" ion-button block (click)="launch()">Continue as {{ user.name }}</button>
+    <br />
+    <button *ngIf="user.name" ion-button block color="light" (click)="switchUser()">Sign in as someone else</button>
+
+    <!-- If not logged in -->
     <button *ngIf="!user.name" ion-button block (click)="login()">Sign in with Google</button>
   </div>
 </ion-content>

@@ -10,7 +10,7 @@ import {DataProvider} from './data';
 export class AuthProvider {
   user: any;
   constructor(private af: AngularFire, private data: DataProvider, private platform: Platform) {
-    this.user = null;
+    this.user = {};
   }
 
   getUserData() {
@@ -28,11 +28,7 @@ export class AuthProvider {
     });
   }
 
-  getUser() {
-    return this.user;
-  }
-
-  loginWithGoogle() {
+  loginGoogle() {
     return Observable.create(observer => {
       this.af.auth.login({
         provider: AuthProviders.Google,
@@ -46,14 +42,12 @@ export class AuthProvider {
         });
         observer.next();
       }).catch((error) => {
-        console.info("error", error);
         observer.error(error);
       });
     });
   }
 
   logout() {
-    this.af.auth.logout();
-    this.user = null;
+    return this.af.auth.logout();
   }
 }

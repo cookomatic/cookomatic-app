@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth';
 
 import { MainPage } from '../../pages/pages';
@@ -17,15 +17,35 @@ import { MainPage } from '../../pages/pages';
 export class WelcomePage {
   error: any;
   user: any;
+  loading: any;
 
-  constructor(public navCtrl: NavController, private auth: AuthProvider) {
-    this.user = this.auth.getUser();
+  constructor(public navCtrl: NavController, private auth: AuthProvider,
+    private loadingCtrl: LoadingController
+    ) {
+    this.auth.getUserData().subscribe(data => {
+      this.user = data;
+    }, err => {
+      console.log('hitting error');
+      this.user = {};
+    });
+    console.log(this.user);
+  }
+
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Logging in...'
+    });
+    this.loading.present();
   }
 
   login() {
-    this.auth.loginWithGoogle().subscribe(data => {
+    this.showLoading();
+
+    this.auth.loginGoogle().subscribe(data => {
+      this.loading.dismiss();
       this.launch();
     }, err => {
+      this.loading.dismiss();
       this.error = err;
     });
   }
@@ -34,6 +54,12 @@ export class WelcomePage {
     this.navCtrl.setRoot(MainPage, {}, {
       animate: true,
       direction: 'forward'
+    });
+  }
+
+  switchUser() {
+    this.auth.logout().then(() => {
+      window.location.reload();
     });
   }
 }

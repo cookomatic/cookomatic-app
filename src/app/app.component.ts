@@ -75,7 +75,7 @@ export class Cookomatic {
       this.auth.getUserData().subscribe(data => {
         this.user = data;
       }, err => {
-        this.openPage(WelcomePage);
+        this.nav.setRoot(WelcomePage);
       });
 
     });
