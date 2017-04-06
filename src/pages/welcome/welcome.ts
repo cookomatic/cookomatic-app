@@ -17,18 +17,24 @@ import { MainPage } from '../../pages/pages';
 export class WelcomePage {
   error: any;
   user: any;
+  userSub: any;
   loading: any;
+  loaded: any;
 
   constructor(
     public navCtrl: NavController,
     private auth: Auth,
     private loadingCtrl: LoadingController
     ) {
+    this.loaded = false;
     this.user = {};
-    this.auth.getUserData().subscribe(data => {
+
+    this.userSub = this.auth.getUserData().subscribe(data => {
       this.user = data;
+      this.loaded = true;
     }, err => {
       this.user = {};
+      this.loaded = true;
     });
   }
 
@@ -59,7 +65,10 @@ export class WelcomePage {
   }
 
   switchUser() {
+    this.userSub.unsubscribe();
+
     this.auth.logout().then(() => {
+      this.showLoading();
       window.location.reload();
     });
   }
