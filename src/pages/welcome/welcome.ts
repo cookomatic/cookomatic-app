@@ -68,7 +68,6 @@ export class WelcomePage {
     this.userSub.unsubscribe();
 
     this.auth.logout().then(() => {
-      this.showLoading();
       window.location.reload();
     });
   }
