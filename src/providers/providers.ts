@@ -1,9 +1,9 @@
 import { User } from './user';
 import { Api } from './api';
-import { Settings } from './settings';
+import { Auth } from './auth';
 
 export {
   User,
   Api,
-  Settings,
+  Auth
 };
