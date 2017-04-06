@@ -4,7 +4,7 @@ import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class AuthProvider {
+export class Auth {
   user: any;
   constructor(private af: AngularFire, private platform: Platform) {
     this.user = {};

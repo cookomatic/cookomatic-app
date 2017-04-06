@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
-import { AuthProvider } from '../../providers/auth';
+import { Auth } from '../../providers/auth';
 
 import { MainPage } from '../../pages/pages';
 
@@ -21,7 +21,7 @@ export class WelcomePage {
 
   constructor(
     public navCtrl: NavController,
-    private auth: AuthProvider,
+    private auth: Auth,
     private loadingCtrl: LoadingController
     ) {
     this.user = {};
