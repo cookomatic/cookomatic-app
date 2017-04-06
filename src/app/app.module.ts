@@ -23,7 +23,6 @@ import { firebaseConfig } from '../config/firebase';
 import { User } from '../providers/user';
 import { Api } from '../providers/api';
 import { Settings } from '../providers/settings';
-import { DataProvider } from '../providers/data';
 import { AuthProvider } from '../providers/auth';
 
 export function provideSettings(storage: Storage) {
@@ -75,7 +74,6 @@ export function providers() {
     Storage,
     User,
     Api,
-    DataProvider,
     AuthProvider,
     { provide: Settings, useFactory: provideSettings, deps: [ Storage ] },
     // Keep this to enable Ionic's runtime error handling during development

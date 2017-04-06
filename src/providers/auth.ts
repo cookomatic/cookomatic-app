@@ -3,13 +3,10 @@ import { Platform } from 'ionic-angular';
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 import { Observable } from 'rxjs/Observable';
 
-// Providers
-import {DataProvider} from './data';
-
 @Injectable()
 export class AuthProvider {
   user: any;
-  constructor(private af: AngularFire, private data: DataProvider, private platform: Platform) {
+  constructor(private af: AngularFire, private platform: Platform) {
     this.user = {};
   }
 
@@ -17,7 +14,7 @@ export class AuthProvider {
     return Observable.create(observer => {
       this.af.auth.subscribe(authData => {
         if (authData) {
-          this.data.object('users/' + authData.uid).subscribe(userData => {
+          this.af.database.object('users/' + authData.uid).subscribe(userData => {
             this.user = userData;
             observer.next(userData);
           });

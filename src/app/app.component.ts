@@ -3,7 +3,6 @@ import { Platform, Nav, Config } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { Settings } from '../providers/providers';
-import { DataProvider } from '../providers/data';
 import { AuthProvider } from '../providers/auth';
 
 import { FirstRunPage } from '../pages/pages';
@@ -58,26 +57,15 @@ export class Cookomatic {
   constructor(
     platform: Platform,
     settings: Settings,
-    protected data: DataProvider,
     protected auth: AuthProvider,
     config: Config) {
 
-    // Create default user object
-    this.user = {};
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       Splashscreen.hide();
-
-      // Configure login
-      // this.auth.getUserData().subscribe(data => {
-      //   this.user = data;
-      // }, err => {
-      //   this.nav.setRoot(WelcomePage);
-      // });
-
     });
   }
 

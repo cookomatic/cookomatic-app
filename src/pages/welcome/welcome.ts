@@ -19,11 +19,12 @@ export class WelcomePage {
   user: any;
   loading: any;
 
-  constructor(public navCtrl: NavController, private auth: AuthProvider,
+  constructor(
+    public navCtrl: NavController,
+    private auth: AuthProvider,
     private loadingCtrl: LoadingController
     ) {
     this.user = {};
-
     this.auth.getUserData().subscribe(data => {
       this.user = data;
     }, err => {
