@@ -29,7 +29,7 @@ export class Auth {
     return Observable.create(observer => {
       this.af.auth.login({
         provider: AuthProviders.Google,
-        method: AuthMethods.Popup
+        method: AuthMethods.Redirect
       }).then((authData) => {
         this.af.database.list('users').update(authData.auth.uid, {
           name: authData.auth.displayName,
