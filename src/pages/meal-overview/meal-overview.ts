@@ -1,6 +1,6 @@
 import { Api } from '../../providers/api';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { Events } from 'ionic-angular';
 
@@ -14,21 +14,29 @@ import { Cooking } from '../cooking/cooking';
 export class MealOverview {
   dishes: any;
   schedule: any;
+  user: any;
+
   constructor(
     public api: Api,
     public navCtrl: NavController,
+    private navParams: NavParams,
     public modalCtrl: ModalController,
     public events: Events
   ) {
-    // Initial value
-    this.schedule = {'ingredients': [], 'estimated_time': 0};
+    // Get user
+    this.user = this.navParams.get('user');
 
+    // Set initial values
+    this.schedule = {'ingredients': [], 'estimated_time': 0};
     this.dishes = [];
+
+    // Whenever a new dish is added, generate a new meal schedule
     events.subscribe("dish:select", (items) => {
       this.dishes = this.dishes.concat(items);
       this.genMealSchedule();
     });
 
+    // If there are no dishes, pop open the Dish Selection modal
     if (this.dishes.length == 0){
       this.addDish();
     }

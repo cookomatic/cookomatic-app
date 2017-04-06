@@ -52,7 +52,7 @@ export class WelcomePage {
   }
 
   launch() {
-    this.navCtrl.setRoot(MainPage, {}, {
+    this.navCtrl.setRoot(MainPage, {'user': this.user}, {
       animate: true,
       direction: 'forward'
     });
