@@ -52,7 +52,6 @@ export class Cookomatic {
     { title: 'Meal Complete', component: MealComplete },
     { title: 'Dish Added', component: DishAdded },
   ]
-  user: any;
 
   constructor(
     platform: Platform,
