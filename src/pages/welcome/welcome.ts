@@ -22,13 +22,13 @@ export class WelcomePage {
   constructor(public navCtrl: NavController, private auth: AuthProvider,
     private loadingCtrl: LoadingController
     ) {
+    this.user = {};
+
     this.auth.getUserData().subscribe(data => {
       this.user = data;
     }, err => {
-      console.log('hitting error');
       this.user = {};
     });
-    console.log(this.user);
   }
 
   showLoading() {

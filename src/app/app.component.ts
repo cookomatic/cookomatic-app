@@ -63,7 +63,7 @@ export class Cookomatic {
     config: Config) {
 
     // Create default user object
-    this.user = {image: ''};
+    this.user = {};
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -72,11 +72,11 @@ export class Cookomatic {
       Splashscreen.hide();
 
       // Configure login
-      this.auth.getUserData().subscribe(data => {
-        this.user = data;
-      }, err => {
-        this.nav.setRoot(WelcomePage);
-      });
+      // this.auth.getUserData().subscribe(data => {
+      //   this.user = data;
+      // }, err => {
+      //   this.nav.setRoot(WelcomePage);
+      // });
 
     });
   }
