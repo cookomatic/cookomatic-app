@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav, Config } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
-import { Settings } from '../providers/providers';
 import { Auth } from '../providers/auth';
 
 import { FirstRunPage } from '../pages/pages';
@@ -35,7 +34,6 @@ export class Cookomatic {
 
   constructor(
     platform: Platform,
-    settings: Settings,
     protected auth: Auth,
     config: Config) {
 
