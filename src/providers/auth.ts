@@ -11,14 +11,23 @@ export class Auth {
     this.user = {};
   }
 
+  buildUserObject(authData) {
+    let user = {}
+    user['uid'] = authData['uid'];
+    user['name'] = authData['auth']['displayName']
+    user['email'] = authData['auth']['email']
+    user['photo'] = authData['auth']['photoURL']
+    user['provider'] = 'google'
+
+    return user;
+  }
+
   getUserData() {
     return Observable.create(observer => {
       this.af.auth.subscribe(authData => {
         if (authData) {
-          this.af.database.object('users/' + authData.uid).subscribe(userData => {
-            this.user = userData;
-            observer.next(userData);
-          });
+          this.user = this.buildUserObject(authData);
+          observer.next(this.user);
         } else {
           observer.error();
         }
@@ -32,12 +41,6 @@ export class Auth {
         provider: AuthProviders.Google,
         method: AuthMethods.Redirect
       }).then((authData) => {
-        this.af.database.list('users').update(authData.auth.uid, {
-          name: authData.auth.displayName,
-          email: authData.auth.email,
-          provider: 'google',
-          image: authData.auth.photoURL
-        });
         observer.next();
       }).catch((error) => {
         observer.error(error);
