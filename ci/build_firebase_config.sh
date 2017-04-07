@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-cp src/config/firebase-template.ts src/config/firebase.ts
 filename=src/config/firebase.ts
+cp src/config/firebase-template.ts $filename
 
 sed -i "s#FBASE_API_KEY#${FBASE_API_KEY}#" $filename
 sed -i "s#FBASE_AUTH_DOMAIN#${FBASE_AUTH_DOMAIN}#" $filename
