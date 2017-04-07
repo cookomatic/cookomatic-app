@@ -37,7 +37,6 @@ export class Auth {
 
   loginGoogle() {
     return Observable.create(observer => {
-      console.log('doing something');
       this.af.auth.login({
         provider: AuthProviders.Google,
         method: AuthMethods.Redirect
