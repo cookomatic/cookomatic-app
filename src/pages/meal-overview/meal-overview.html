@@ -35,11 +35,10 @@
 
     <h3 *ngIf="dishes.length > 0">Ingredients</h3>
     <ion-list>
-      <ul>
-        <li *ngFor="let ingredient of schedule.ingredients">
-          {{ingredient}}
-        </li>
-      </ul>
+      <ion-item *ngFor="let ingredient of schedule.ingredients">
+        <ion-label>{{ingredient}}</ion-label>
+        <ion-checkbox checked="false"></ion-checkbox>
+      </ion-item>
     </ion-list>
 </ion-content>
 
