@@ -17,9 +17,9 @@ install:
     - "./ci/install.sh"
 
 script:
+    - "./ci/gen_firebase.sh"
     - "./ci/build.sh"
     - "./ci/run_tests.sh"
 
 after_success:
-    - "./ci/build_firebase_config.sh"
     - "./ci/deploy.sh"
