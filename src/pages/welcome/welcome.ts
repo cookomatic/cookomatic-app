@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
+import { Auth } from '../../providers/auth';
 
-import { LoginPage } from '../login/login';
+import { MainPage } from '../../pages/pages';
 
 /**
  * The Welcome Page is a splash page that quickly describes the app,
@@ -14,10 +15,60 @@ import { LoginPage } from '../login/login';
   templateUrl: 'welcome.html'
 })
 export class WelcomePage {
+  error: any;
+  user: any;
+  userSub: any;
+  loading: any;
+  loaded: any;
 
-  constructor(public navCtrl: NavController) {}
+  constructor(
+    public navCtrl: NavController,
+    private auth: Auth,
+    private loadingCtrl: LoadingController
+    ) {
+    this.loaded = false;
+    this.user = {};
+
+    this.userSub = this.auth.getUserData().subscribe(data => {
+      this.user = data;
+      this.loaded = true;
+    }, err => {
+      this.user = {};
+      this.loaded = true;
+    });
+  }
+
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Logging in...'
+    });
+    this.loading.present();
+  }
 
   login() {
-    this.navCtrl.push(LoginPage);
+    this.showLoading();
+
+    this.auth.loginGoogle().subscribe(data => {
+      this.loading.dismiss();
+      this.launch();
+    }, err => {
+      this.loading.dismiss();
+      this.error = err;
+    });
+  }
+
+  launch() {
+    this.navCtrl.setRoot(MainPage, {'user': this.user}, {
+      animate: true,
+      direction: 'forward'
+    });
+  }
+
+  switchUser() {
+    this.userSub.unsubscribe();
+
+    this.auth.logout().then(() => {
+      window.location.reload();
+    });
   }
 }

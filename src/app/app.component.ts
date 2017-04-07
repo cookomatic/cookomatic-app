@@ -3,10 +3,10 @@ import { Platform, Nav, Config } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { Settings } from '../providers/providers';
+import { Auth } from '../providers/auth';
 
 import { FirstRunPage } from '../pages/pages';
 import { ContentPage } from '../pages/content/content';
-import { LoginPage } from '../pages/login/login';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { MenuPage } from '../pages/menu/menu';
@@ -45,7 +45,6 @@ export class Cookomatic {
     { title: 'Tutorial', component: TutorialPage },
     { title: 'Welcome', component: WelcomePage },
     { title: 'Content', component: ContentPage },
-    { title: 'Login', component: LoginPage },
     { title: 'Menu', component: MenuPage },
     { title: 'Settings', component: SettingsPage },
     { title: 'Meal Overview', component: MealOverview },
@@ -54,7 +53,13 @@ export class Cookomatic {
     { title: 'Dish Added', component: DishAdded },
   ]
 
-  constructor(platform: Platform, settings: Settings, config: Config) {
+  constructor(
+    platform: Platform,
+    settings: Settings,
+    protected auth: Auth,
+    config: Config) {
+
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
