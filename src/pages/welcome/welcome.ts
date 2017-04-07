@@ -26,27 +26,34 @@ export class WelcomePage {
     private auth: Auth,
     private loadingCtrl: LoadingController
     ) {
+
+    // Initialize variables to blank state
     this.loaded = false;
     this.user = {};
+
+    // Prepare to load authentication data
+    this.showLoading('Connecting to server...');
 
     this.userSub = this.auth.getUserData().subscribe(data => {
       this.user = data;
       this.loaded = true;
+      this.loading.dismiss();
     }, err => {
       this.user = {};
       this.loaded = true;
+      this.loading.dismiss();
     });
   }
 
-  showLoading() {
+  showLoading(message) {
     this.loading = this.loadingCtrl.create({
-      content: 'Logging in...'
+      content: message
     });
     this.loading.present();
   }
 
   login() {
-    this.showLoading();
+    this.showLoading('Logging in...');
 
     this.auth.loginGoogle().subscribe(data => {
       this.loading.dismiss();
