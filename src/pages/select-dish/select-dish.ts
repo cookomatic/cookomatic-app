@@ -3,6 +3,7 @@ import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { Api } from '../../providers/api';
 
 import { DishInfo } from '../dish-info/dish-info';
+import { Events } from 'ionic-angular';
 
 @Component({
   selector: 'select-dish',
@@ -10,14 +11,23 @@ import { DishInfo } from '../dish-info/dish-info';
 })
 export class SelectDish {
   currentItems: any = [];
+  dishes: any;
 
   constructor(
     public api: Api,
     public navCtrl: NavController,
     public navParams: NavParams,
-    public viewCtrl: ViewController) {
+    public viewCtrl: ViewController,
+    public events: Events,
+  ) {
       this.loadItems("");
+
+      this.dishes = [];
+      events.subscribe("dish:select", (items) => {
+        this.dishes = this.dishes.concat(items);
+      });
     }
+
 
   /**
    * Perform a service for the proper items.
@@ -25,6 +35,16 @@ export class SelectDish {
   getItems(ev) {
     let val = ev.target.value;
     this.loadItems(val)
+  }
+
+  checkAdded( item ) {
+    var i = this.dishes.length;
+    while( i-- ) {
+       if (this.dishes[i] === item) {
+           return true;
+       }
+    }
+    return false;
   }
 
   loadItems(val) {

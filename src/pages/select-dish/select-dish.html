@@ -16,7 +16,7 @@
 <ion-content>
   <ion-searchbar (ionInput)="getItems($event)" placeholder="Search..."></ion-searchbar>
   <ion-list>
-    <button ion-item (click)="openItem(item)" *ngFor="let item of currentItems">
+    <button ion-item (click)="openItem(item)" *ngFor="let item of currentItems" [disabled]="checkAdded(item) ? true : false">
       <ion-avatar item-left>
         <img [src]="item.img_thumb" />
       </ion-avatar>
