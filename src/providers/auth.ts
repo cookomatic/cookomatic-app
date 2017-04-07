@@ -13,7 +13,6 @@ export class Auth {
 
   buildUserObject(authData) {
     let user = {}
-    user = {};
     user['uid'] = authData['uid'];
     user['name'] = authData['auth']['displayName']
     user['email'] = authData['auth']['email']
