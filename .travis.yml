@@ -21,4 +21,5 @@ script:
     - "./ci/run_tests.sh"
 
 after_success:
+    - "./ci/build_firebase_config.sh"
     - "./ci/deploy.sh"
