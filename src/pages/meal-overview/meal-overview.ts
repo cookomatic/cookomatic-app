@@ -33,7 +33,7 @@ export class MealOverview {
     // Whenever a new dish is added, generate a new meal schedule
     events.subscribe("dish:select", (items) => {
       this.dishes = this.dishes.concat(items);
-      this.genMealSchedule();
+      this.createMeal();
     });
 
     // If there are no dishes, pop open the Dish Selection modal
@@ -52,21 +52,21 @@ export class MealOverview {
   }
 
   createMeal() {
-    // let seq = this.api.post('meal', this.dishes);
-    // seq
-    //   .map(res => res.json())
-    //   .subscribe(res => {
-    //     return res['meal_id'];
-    //   }, err => {
-    //     console.error('ERROR', err);
-    //   })
-    return 12345
+    var dish_ids = this.dishes.map(function(dish) {
+      return dish['id']
+    });
+
+    let seq = this.api.post('meal', {'name': 'Meal', 'dishes': dish_ids});
+    seq
+      .map(res => res.json())
+      .subscribe(res => {
+        this.genSchedule(res['meal_id']);
+      }, err => {
+        console.error('ERROR', err);
+      })
   }
 
-  genMealSchedule() {
-    // Send dishes to DB and get a meal ID
-    var mealId = this.createMeal();
-
+  genSchedule(mealId) {
     // Get a schedule for the created meal
     let seq = this.api.get('schedule/' + mealId)
     seq

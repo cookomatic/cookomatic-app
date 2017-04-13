@@ -26,6 +26,7 @@ export class Auth {
     return Observable.create(observer => {
       this.af.auth.subscribe(authData => {
         if (authData) {
+          console.log(authData);
           this.user = this.buildUserObject(authData);
           observer.next(this.user);
         } else {
