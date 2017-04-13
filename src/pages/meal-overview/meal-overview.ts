@@ -32,7 +32,7 @@ export class MealOverview {
     this.schedule = {'ingredients': [], 'estimated_time': 0};
     this.dishes = [];
 
-    // Whenever a new dish is added, generate a new meal steps
+    // Whenever a new dish is added, generate a new meal schedule
     events.subscribe("dish:select", (items) => {
       this.dishes = this.dishes.concat(items);
 
