@@ -1,6 +1,6 @@
 import { Api } from '../../providers/api';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { Events } from 'ionic-angular';
 
@@ -15,13 +15,15 @@ export class MealOverview {
   dishes: any;
   schedule: any;
   user: any;
+  loading: any;
 
   constructor(
     public api: Api,
     public navCtrl: NavController,
     private navParams: NavParams,
     public modalCtrl: ModalController,
-    public events: Events
+    public events: Events,
+    private loadingCtrl: LoadingController
   ) {
     // Get user
     this.user = this.navParams.get('user');
@@ -30,16 +32,25 @@ export class MealOverview {
     this.schedule = {'ingredients': [], 'estimated_time': 0};
     this.dishes = [];
 
-    // Whenever a new dish is added, generate a new meal schedule
+    // Whenever a new dish is added, generate a new meal steps
     events.subscribe("dish:select", (items) => {
       this.dishes = this.dishes.concat(items);
-      this.createMeal();
+
+      // Generate schedule
+      this.genSchedule();
     });
 
     // If there are no dishes, pop open the Dish Selection modal
     if (this.dishes.length == 0){
       this.addDish();
     }
+  }
+
+  showLoading(message) {
+    this.loading = this.loadingCtrl.create({
+      content: message
+    });
+    this.loading.present();
   }
 
   addDish() {
@@ -49,6 +60,14 @@ export class MealOverview {
 
   removeDish(event, item, index) {
     this.dishes.splice(index, 1);
+
+    // Generate schedule
+    this.genSchedule();
+  }
+
+  genSchedule() {
+    this.showLoading('Generating schedule...');
+    this.createMeal();
   }
 
   createMeal() {
@@ -60,19 +79,20 @@ export class MealOverview {
     seq
       .map(res => res.json())
       .subscribe(res => {
-        this.genSchedule(res['meal_id']);
+        this.getMeal(res['meal_id']);
       }, err => {
         console.error('ERROR', err);
       })
   }
 
-  genSchedule(mealId) {
-    // Get a schedule for the created meal
-    let seq = this.api.get('schedule/' + mealId)
+  getMeal(mealId) {
+    // Get a steps for the created meal
+    let seq = this.api.get('meal/' + mealId)
     seq
       .map(res => res.json())
       .subscribe(res => {
-        this.schedule = res;
+        this.schedule = res['schedule'];
+        this.loading.dismiss();
       }, err => {
         console.error('ERROR', err);
       })
