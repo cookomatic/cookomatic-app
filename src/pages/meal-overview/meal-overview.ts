@@ -1,6 +1,6 @@
 import { Api } from '../../providers/api';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { Events } from 'ionic-angular';
 
@@ -15,13 +15,15 @@ export class MealOverview {
   dishes: any;
   schedule: any;
   user: any;
+  loading: any;
 
   constructor(
     public api: Api,
     public navCtrl: NavController,
     private navParams: NavParams,
     public modalCtrl: ModalController,
-    public events: Events
+    public events: Events,
+    private loadingCtrl: LoadingController
   ) {
     // Get user
     this.user = this.navParams.get('user');
@@ -33,13 +35,22 @@ export class MealOverview {
     // Whenever a new dish is added, generate a new meal schedule
     events.subscribe("dish:select", (items) => {
       this.dishes = this.dishes.concat(items);
-      this.genMealSchedule();
+
+      // Generate schedule
+      this.genSchedule();
     });
 
     // If there are no dishes, pop open the Dish Selection modal
     if (this.dishes.length == 0){
       this.addDish();
     }
+  }
+
+  showLoading(message) {
+    this.loading = this.loadingCtrl.create({
+      content: message
+    });
+    this.loading.present();
   }
 
   addDish() {
@@ -49,30 +60,39 @@ export class MealOverview {
 
   removeDish(event, item, index) {
     this.dishes.splice(index, 1);
+
+    // Generate schedule
+    this.genSchedule();
+  }
+
+  genSchedule() {
+    this.showLoading('Generating schedule...');
+    this.createMeal();
   }
 
   createMeal() {
-    // let seq = this.api.post('meal', this.dishes);
-    // seq
-    //   .map(res => res.json())
-    //   .subscribe(res => {
-    //     return res['meal_id'];
-    //   }, err => {
-    //     console.error('ERROR', err);
-    //   })
-    return 12345
-  }
+    var dish_ids = this.dishes.map(function(dish) {
+      return dish['id']
+    });
 
-  genMealSchedule() {
-    // Send dishes to DB and get a meal ID
-    var mealId = this.createMeal();
-
-    // Get a schedule for the created meal
-    let seq = this.api.get('schedule/' + mealId)
+    let seq = this.api.post('meal', {'name': 'Meal', 'dishes': dish_ids});
     seq
       .map(res => res.json())
       .subscribe(res => {
-        this.schedule = res;
+        this.getMeal(res['meal_id']);
+      }, err => {
+        console.error('ERROR', err);
+      })
+  }
+
+  getMeal(mealId) {
+    // Get a steps for the created meal
+    let seq = this.api.get('meal/' + mealId)
+    seq
+      .map(res => res.json())
+      .subscribe(res => {
+        this.schedule = res['schedule'];
+        this.loading.dismiss();
       }, err => {
         console.error('ERROR', err);
       })
