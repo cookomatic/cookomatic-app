@@ -44,8 +44,6 @@ export class Cooking {
       }
     });
 
-    console.log(this.schedule);
-
     // Notify user that cooking has begun
     this.startCooking();
   }
