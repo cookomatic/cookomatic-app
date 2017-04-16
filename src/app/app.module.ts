@@ -4,7 +4,6 @@ import { Storage } from '@ionic/storage';
 
 import { Cookomatic } from './app.component';
 
-import { ContentPage } from '../pages/content/content';
 import { WelcomePage } from '../pages/welcome/welcome';
 
 import { MealOverview } from '../pages/meal-overview/meal-overview';
@@ -19,6 +18,7 @@ import { firebaseConfig } from '../config/firebase';
 
 import { User } from '../providers/user';
 import { Api } from '../providers/api';
+import { State } from '../providers/state';
 import { Auth } from '../providers/auth';
 
 /**
@@ -28,7 +28,6 @@ import { Auth } from '../providers/auth';
  */
 let pages = [
   Cookomatic,
-  ContentPage,
   WelcomePage,
   MealOverview,
   DishInfo,
@@ -52,6 +51,7 @@ export function providers() {
     User,
     Api,
     Auth,
+    State,
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ];

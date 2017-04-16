@@ -10,11 +10,11 @@ import { MainPage } from '../../pages/pages';
 export class MealComplete {
   item: any;
   constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public events: Events
+    private navCtrl: NavController,
+    private navParams: NavParams,
+    private events: Events
   ) {
-   
+
   }
   goToMainPage() {
     this.navCtrl.push(MainPage);

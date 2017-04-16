@@ -11,9 +11,9 @@ import { SelectDish } from '../select-dish/select-dish';
 export class DishAdded {
 
   constructor(
-    public navCtrl: NavController,
-    public viewCtrl: ViewController,
-    public events: Events
+    private navCtrl: NavController,
+    private viewCtrl: ViewController,
+    private events: Events
   ) {}
 
   goToMainPage() {

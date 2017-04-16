@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Events } from 'ionic-angular';
+
 import { Api } from '../../providers/api';
+import { State } from '../../providers/state';
 
 import { DishAdded } from '../dish-added/dish-added'
 
@@ -12,10 +14,11 @@ import { DishAdded } from '../dish-added/dish-added'
 export class DishInfo {
   item: any;
   constructor(
-    public api: Api,
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public events: Events
+    private api: Api,
+    private state: State,
+    private navCtrl: NavController,
+    private navParams: NavParams,
+    private events: Events
   ) {
     // Initial value
     this.item = {'ingredients': [], 'steps': []};
@@ -32,7 +35,12 @@ export class DishInfo {
   }
 
   addToMeal(event, item) {
-    this.events.publish("dish:select", item);
+    // Add new dish
+    this.state.dishes.concat(item);
+
+    // Alert subscribers of new dish
+    this.events.publish("dishChange", null);
+
     this.navCtrl.setRoot(DishAdded, item, {
       animate: true,
       direction: 'forward'

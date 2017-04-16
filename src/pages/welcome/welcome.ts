@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
+
 import { Auth } from '../../providers/auth';
+import { State } from '../../providers/state';
 
 import { MainPage } from '../../pages/pages';
 
@@ -16,30 +18,29 @@ import { MainPage } from '../../pages/pages';
 })
 export class WelcomePage {
   error: any;
-  user: any;
   userSub: any;
   loading: any;
   loaded: any;
 
   constructor(
-    public navCtrl: NavController,
+    private navCtrl: NavController,
     private auth: Auth,
+    private state: State,
     private loadingCtrl: LoadingController
     ) {
 
     // Initialize variables to blank state
     this.loaded = false;
-    this.user = {};
 
     // Prepare to load authentication data
     this.showLoading('Connecting to server...');
 
     this.userSub = this.auth.getUserData().subscribe(data => {
-      this.user = data;
+      this.state.user = data;
       this.loaded = true;
       this.loading.dismiss();
     }, err => {
-      this.user = {};
+      this.state.user = {};
       this.loaded = true;
       this.loading.dismiss();
     });
@@ -65,7 +66,7 @@ export class WelcomePage {
   }
 
   launch() {
-    this.navCtrl.setRoot(MainPage, {'user': this.user}, {
+    this.navCtrl.setRoot(MainPage, {
       animate: true,
       direction: 'forward'
     });

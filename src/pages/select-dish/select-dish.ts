@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { Api } from '../../providers/api';
+import { State } from '../../providers/state';
 
 import { DishInfo } from '../dish-info/dish-info';
 import { Events } from 'ionic-angular';
@@ -10,49 +11,42 @@ import { Events } from 'ionic-angular';
   templateUrl: 'select-dish.html'
 })
 export class SelectDish {
-  currentItems: any = [];
-  dishes: any;
+  dishResults: any = [];
 
   constructor(
-    public api: Api,
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public viewCtrl: ViewController,
-    public events: Events,
+    private api: Api,
+    private state: State,
+    private navCtrl: NavController,
+    private navParams: NavParams,
+    private viewCtrl: ViewController,
+    private events: Events,
   ) {
-      this.loadItems("");
-
-      this.dishes = [];
-      events.subscribe("dish:select", (items) => {
-        this.dishes = this.dishes.concat(items);
-      });
+      this.searchDishes("");
     }
-
 
   /**
    * Perform a service for the proper items.
    */
   getItems(ev) {
     let val = ev.target.value;
-    this.loadItems(val)
+    this.searchDishes(val)
   }
 
-  checkAdded( item ) {
-    var i = this.dishes.length;
-    while( i-- ) {
-       if (this.dishes[i] === item) {
-           return true;
-       }
+  checkIfAdded(dish) {
+    for (let selectedDish of this.state.dishes) {
+      if (dish['id'] === selectedDish['id']) {
+        return true;
+      }
     }
     return false;
   }
 
-  loadItems(val) {
+  searchDishes(val) {
     let seq = this.api.get('dish/search?search=' + val)
     seq
       .map(res => res.json())
       .subscribe(res => {
-        this.currentItems = res;
+        this.dishResults = res;
       }, err => {
         console.error('ERROR', err);
       })
