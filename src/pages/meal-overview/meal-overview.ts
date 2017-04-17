@@ -54,7 +54,15 @@ export class MealOverview {
     seq
       .map(res => res.json())
       .subscribe(res => {
-        this.sg['schedule'] = res['schedule'];
+        let schedule = res['schedule'];
+
+        // If schedule is null, set it as an empty object instead
+        if (!schedule) {
+          schedule = {};
+        }
+
+        // Save the schedule
+        this.sg['schedule'] = schedule;
       }, err => {
         console.error('ERROR', err);
       })
