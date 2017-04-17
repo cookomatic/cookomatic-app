@@ -36,7 +36,7 @@ export class SelectDish {
 
   checkIfAdded(dish) {
     for (let selectedDish of this.sg['dishes']) {
-      if (dish['id'] === selectedDish['id']) {
+      if (dish['id'] == selectedDish['id']) {
         return true;
       }
     }
