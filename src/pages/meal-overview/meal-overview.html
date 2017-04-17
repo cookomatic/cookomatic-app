@@ -8,7 +8,7 @@
     <h3>Selected Dishes</h3>
     <ion-grid>
       <ion-row wrap>
-        <ion-col width-50 *ngFor="let item of dishes; let i = index">
+        <ion-col width-50 *ngFor="let item of sg['dishes']; let i = index">
           <ion-card>
             <img src="{{item.img_thumb}}" />
             <ion-card-content>
@@ -31,11 +31,11 @@
       </ion-row>
     </ion-grid>
 
-    <p *ngIf="dishes.length > 0"><strong>Estimated Cook Time: </strong>{{schedule.estimated_time}} minutes</p>
+    <p *ngIf="sg['dishes'].length > 0"><strong>Estimated Cook Time: </strong>{{sg['schedule'].estimated_time}} minutes</p>
 
-    <h3 *ngIf="dishes.length > 0">Ingredients</h3>
+    <h3 *ngIf="sg['dishes'].length > 0">Ingredients</h3>
     <ion-list>
-      <ion-item *ngFor="let ingredient of schedule.ingredients">
+      <ion-item *ngFor="let ingredient of sg['schedule'].ingredients">
         <ion-label>{{ingredient}}</ion-label>
         <ion-checkbox checked="false"></ion-checkbox>
       </ion-item>
@@ -45,8 +45,8 @@
 <ion-footer>
   <ion-toolbar>
     <button ion-button block
-      [disabled]="(dishes.length > 0) ? false : true"
-      [color]="(dishes.length > 0) ? 'default' : 'dark'"
+      [disabled]="(sg['dishes'].length > 0) ? false : true"
+      [color]="(sg['dishes'].length > 0) ? 'default' : 'dark'"
       (click)="startCooking()">Start Cooking!</button>
   </ion-toolbar>
 </ion-footer>

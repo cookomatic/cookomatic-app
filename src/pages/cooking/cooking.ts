@@ -4,7 +4,7 @@ import { MealComplete } from '../meal-complete/meal-complete';
 import { Observable } from 'rxjs/Rx';
 import { ToastController } from 'ionic-angular';
 
-import { State } from '../../providers/state';
+import { SimpleGlobal } from 'ng2-simple-global';
 
 var ONE_MINUTE = 5000
 
@@ -21,21 +21,21 @@ export class Cooking {
   ticks: any;
 
   constructor (
-    private state: State,
     private navCtrl: NavController,
     private viewCtrl: ViewController,
     private params: NavParams,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private sg: SimpleGlobal
   ) {
     // Get schedule from Meal Overview
-    this.steps = this.state.schedule.steps;
+    this.steps = this.sg['schedule']['steps'];
 
     // Set initial step visibility values
     this.stepVisibility = new Array(this.steps.length).fill(false);
 
     // Initialize timer
     this.timer = Observable.timer(0, ONE_MINUTE);
-    this.totalTime = this.state.schedule.estimated_time;
+    this.totalTime = this.sg['schedule'].estimated_time;
     this.ticks = 0
 
     // Start timer ticking

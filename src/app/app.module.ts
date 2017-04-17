@@ -18,8 +18,8 @@ import { firebaseConfig } from '../config/firebase';
 
 import { User } from '../providers/user';
 import { Api } from '../providers/api';
-import { State } from '../providers/state';
 import { Auth } from '../providers/auth';
+import { SimpleGlobal } from 'ng2-simple-global';
 
 /**
  * The Pages array lists all of the pages we want to use in our app.
@@ -51,7 +51,7 @@ export function providers() {
     User,
     Api,
     Auth,
-    State,
+    SimpleGlobal,
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ];

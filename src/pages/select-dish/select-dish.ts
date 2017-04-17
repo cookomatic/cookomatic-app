@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { SimpleGlobal } from 'ng2-simple-global';
+
 import { Api } from '../../providers/api';
-import { State } from '../../providers/state';
+
 
 import { DishInfo } from '../dish-info/dish-info';
 import { Events } from 'ionic-angular';
@@ -15,11 +17,11 @@ export class SelectDish {
 
   constructor(
     private api: Api,
-    private state: State,
     private navCtrl: NavController,
     private navParams: NavParams,
     private viewCtrl: ViewController,
     private events: Events,
+    private sg: SimpleGlobal
   ) {
       this.searchDishes("");
     }
@@ -33,7 +35,7 @@ export class SelectDish {
   }
 
   checkIfAdded(dish) {
-    for (let selectedDish of this.state.dishes) {
+    for (let selectedDish of this.sg['dishes']) {
       if (dish['id'] === selectedDish['id']) {
         return true;
       }

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
+import { SimpleGlobal } from 'ng2-simple-global';
 
 import { Auth } from '../../providers/auth';
-import { State } from '../../providers/state';
 
 import { MainPage } from '../../pages/pages';
 
@@ -25,9 +25,14 @@ export class WelcomePage {
   constructor(
     private navCtrl: NavController,
     private auth: Auth,
-    private state: State,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private sg: SimpleGlobal
     ) {
+
+    // Initialize globals
+    this.sg['user'] = {};
+    this.sg['dishes'] = [];
+    this.sg['schedule'] = {'ingredients': [], 'estimated_time': 0};
 
     // Initialize variables to blank state
     this.loaded = false;
@@ -36,11 +41,11 @@ export class WelcomePage {
     this.showLoading('Connecting to server...');
 
     this.userSub = this.auth.getUserData().subscribe(data => {
-      this.state.user = data;
+      this.sg['user'] = data;
       this.loaded = true;
       this.loading.dismiss();
     }, err => {
-      this.state.user = {};
+      this.sg['user'] = {};
       this.loaded = true;
       this.loading.dismiss();
     });

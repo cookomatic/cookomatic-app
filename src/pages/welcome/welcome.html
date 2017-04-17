@@ -8,11 +8,11 @@
   </div>
   <div padding>
     <!-- If logged in -->
-    <button *ngIf="loaded && user.name" ion-button block class="animated fadeInLeft" (click)="launch()">Continue as {{ user.name }}</button>
+    <button *ngIf="loaded && sg['user'].name" ion-button block class="animated fadeInLeft" (click)="launch()">Continue as {{ sg['user'].name }}</button>
     <br />
-    <button *ngIf="loaded && user.name" ion-button block color="light" class="animated fadeInRight" (click)="switchUser()">Sign in as someone else</button>
+    <button *ngIf="loaded && sg['user'].name" ion-button block color="light" class="animated fadeInRight" (click)="switchUser()">Sign in as someone else</button>
 
     <!-- If not logged in -->
-    <button *ngIf="loaded && !user.name" ion-button block class="animated fadeInUp" (click)="login()">Sign in with Google</button>
+    <button *ngIf="loaded && !sg['user'].name" ion-button block class="animated fadeInUp" (click)="login()">Sign in with Google</button>
   </div>
 </ion-content>

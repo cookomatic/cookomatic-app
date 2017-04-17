@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { Events } from 'ionic-angular';
+import { SimpleGlobal } from 'ng2-simple-global';
 
 import { Api } from '../../providers/api';
-import { State } from '../../providers/state';
 
 import { SelectDish } from '../select-dish/select-dish';
 import { Cooking } from '../cooking/cooking';
@@ -15,33 +15,24 @@ import { Cooking } from '../cooking/cooking';
 })
 export class MealOverview {
   schedule: any;
-  loading: any;
 
   constructor(
     private api: Api,
-    private state: State,
     private navCtrl: NavController,
     private navParams: NavParams,
     private modalCtrl: ModalController,
     private events: Events,
-    private loadingCtrl: LoadingController
+    private sg: SimpleGlobal
   ) {
     // Whenever a new dish is added, generate a new meal schedule
     events.subscribe("dishChange", (items) => {
-      this.genSchedule();
+      this.createMeal();
     });
 
     // If there are no dishes, pop open the Dish Selection modal
-    if (this.state.dishes.length == 0){
+    if (this.sg['dishes'].length == 0){
       this.addDish();
     }
-  }
-
-  showLoading(message) {
-    this.loading = this.loadingCtrl.create({
-      content: message
-    });
-    this.loading.present();
   }
 
   addDish() {
@@ -50,17 +41,12 @@ export class MealOverview {
   }
 
   removeDish(event, item, index) {
-    this.state.dishes.splice(index, 1);
+    this.sg['dishes'].splice(index, 1);
     this.events.publish("dishChange", null);
   }
 
-  genSchedule() {
-    this.showLoading('Generating schedule...');
-    this.createMeal();
-  }
-
   createMeal() {
-    var dish_ids = this.state.dishes.map(function(dish) {
+    var dish_ids = this.sg['dishes'].map(function(dish) {
       return dish['id']
     });
 
@@ -68,7 +54,7 @@ export class MealOverview {
     seq
       .map(res => res.json())
       .subscribe(res => {
-        this.state.schedule = res['schedule'];
+        this.sg['schedule'] = res['schedule'];
       }, err => {
         console.error('ERROR', err);
       })

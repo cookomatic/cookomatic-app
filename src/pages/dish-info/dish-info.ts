@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Events } from 'ionic-angular';
+import { SimpleGlobal } from 'ng2-simple-global';
 
 import { Api } from '../../providers/api';
-import { State } from '../../providers/state';
 
 import { DishAdded } from '../dish-added/dish-added'
 
@@ -15,10 +15,10 @@ export class DishInfo {
   item: any;
   constructor(
     private api: Api,
-    private state: State,
     private navCtrl: NavController,
     private navParams: NavParams,
-    private events: Events
+    private events: Events,
+    private sg: SimpleGlobal
   ) {
     // Initial value
     this.item = {'ingredients': [], 'steps': []};
@@ -36,7 +36,7 @@ export class DishInfo {
 
   addToMeal(event, item) {
     // Add new dish
-    this.state.dishes.concat(item);
+    this.sg['dishes'] = this.sg['dishes'].concat(item);
 
     // Alert subscribers of new dish
     this.events.publish("dishChange", null);
