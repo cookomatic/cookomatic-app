@@ -1,22 +1,29 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { SimpleGlobal } from 'ng2-simple-global';
+
 import { Api } from '../../providers/api';
 
+
 import { DishInfo } from '../dish-info/dish-info';
+import { Events } from 'ionic-angular';
 
 @Component({
   selector: 'select-dish',
   templateUrl: 'select-dish.html'
 })
 export class SelectDish {
-  currentItems: any = [];
+  dishResults: any = [];
 
   constructor(
-    public api: Api,
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public viewCtrl: ViewController) {
-      this.loadItems("");
+    private api: Api,
+    private navCtrl: NavController,
+    private navParams: NavParams,
+    private viewCtrl: ViewController,
+    private events: Events,
+    private sg: SimpleGlobal
+  ) {
+      this.searchDishes("");
     }
 
   /**
@@ -24,15 +31,24 @@ export class SelectDish {
    */
   getItems(ev) {
     let val = ev.target.value;
-    this.loadItems(val)
+    this.searchDishes(val)
   }
 
-  loadItems(val) {
+  checkIfAdded(dish) {
+    for (let selectedDish of this.sg['dishes']) {
+      if (dish['id'] == selectedDish['id']) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  searchDishes(val) {
     let seq = this.api.get('dish/search?search=' + val)
     seq
       .map(res => res.json())
       .subscribe(res => {
-        this.currentItems = res;
+        this.dishResults = res;
       }, err => {
         console.error('ERROR', err);
       })

@@ -4,7 +4,6 @@ import { Storage } from '@ionic/storage';
 
 import { Cookomatic } from './app.component';
 
-import { ContentPage } from '../pages/content/content';
 import { WelcomePage } from '../pages/welcome/welcome';
 
 import { MealOverview } from '../pages/meal-overview/meal-overview';
@@ -20,6 +19,7 @@ import { firebaseConfig } from '../config/firebase';
 import { User } from '../providers/user';
 import { Api } from '../providers/api';
 import { Auth } from '../providers/auth';
+import { SimpleGlobal } from 'ng2-simple-global';
 
 /**
  * The Pages array lists all of the pages we want to use in our app.
@@ -28,7 +28,6 @@ import { Auth } from '../providers/auth';
  */
 let pages = [
   Cookomatic,
-  ContentPage,
   WelcomePage,
   MealOverview,
   DishInfo,
@@ -52,6 +51,7 @@ export function providers() {
     User,
     Api,
     Auth,
+    SimpleGlobal,
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ];

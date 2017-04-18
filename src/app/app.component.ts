@@ -5,7 +5,6 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 import { Auth } from '../providers/auth';
 
 import { FirstRunPage } from '../pages/pages';
-import { ContentPage } from '../pages/content/content';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { SelectDish } from '../pages/select-dish/select-dish';
 import { MealComplete } from '../pages/meal-complete/meal-complete';
@@ -25,7 +24,6 @@ export class Cookomatic {
 
   pages: any[] = [
     { title: 'Welcome', component: WelcomePage },
-    { title: 'Content', component: ContentPage },
     { title: 'Meal Overview', component: MealOverview },
     { title: 'Select Dish', component: SelectDish },
     { title: 'Meal Complete', component: MealComplete },
@@ -36,8 +34,6 @@ export class Cookomatic {
     platform: Platform,
     protected auth: Auth,
     config: Config) {
-
-
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
