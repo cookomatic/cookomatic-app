@@ -64,7 +64,10 @@ export class Cooking {
     return Math.floor(ticks);
   }
 
-  stepColor(time) {
+  stepColor(time, checked) {
+    if (checked) {
+      return "cooking-done"
+    }
     if (time < 0){
       return "cooking-done";
     } else if(this.ticks >= time){

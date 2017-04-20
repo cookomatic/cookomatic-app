@@ -6,24 +6,31 @@
 
 <ion-content padding>
 
-  <ion-list *ngFor="let item of steps; let i = index">
-    <ion-item-sliding class="animated fadeInRight" #stepCard>
-      <ion-item icon-right [color]="stepColor(item.start_time)" on-tap="stepVisibility[i] = !stepVisibility[i]">
-        {{item.name}}
-        <ion-card class="slide" [style.max-height]="(stepVisibility[i]) ? '1000px' : '0px'">
-          <ion-card-content class="wrap-normal" color="dark">
-            <ul>
-              {{item.description}}
-            </ul>
-          </ion-card-content>
-        </ion-card>
-        <ion-icon item-right name="arrow-down"></ion-icon>
-      </ion-item>
-      <ion-item-options side="right">
-        <button ion-button color="cooking-done" (click)="item.start_time = -1; stepCard.close()">Complete</button>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
+  <ion-card *ngFor="let item of steps; let i = index" [color]="stepColor(item.start_time, item.checked)">
+
+    <ion-item [color]="stepColor(item.start_time, item.checked)">
+      <font size="4"><b>{{item.name}}</b></font>
+    </ion-item>
+
+
+
+    <ion-card-content>
+      <p>{{item.description}}</p>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col>
+
+        <ion-item [color]="stepColor(item.start_time, item.checked)">
+          <ion-label>Step Complete</ion-label>
+          <ion-checkbox [(ngModel)]="item.checked" color="cooking-done"></ion-checkbox>
+        </ion-item>
+
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
 </ion-content>
 
 <ion-footer>
