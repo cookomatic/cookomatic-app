@@ -6,7 +6,8 @@ import { ToastController } from 'ionic-angular';
 
 import { SimpleGlobal } from 'ng2-simple-global';
 
-var ONE_MINUTE = 5000
+// This is sped up for demos. Should be 30000 normally.
+var HALF_MINUTE = 2500
 
 @Component({
   selector: 'page-cooking',
@@ -34,13 +35,13 @@ export class Cooking {
     this.stepVisibility = new Array(this.steps.length).fill(false);
 
     // Initialize timer
-    this.timer = Observable.timer(0, ONE_MINUTE);
+    this.timer = Observable.timer(0, HALF_MINUTE);
     this.totalTime = this.sg['schedule'].estimated_time;
-    this.ticks = 0
+    this.ticks = 0;
 
     // Start timer ticking
     let timer_sub = this.timer.subscribe(num_ticks => {
-      this.ticks = num_ticks;
+      this.ticks = num_ticks / 2;
       if (this.ticks >= this.totalTime){
         this.cookingComplete(timer_sub);
       }
@@ -57,6 +58,10 @@ export class Cooking {
       position: 'top'
     });
     toast.present();
+  }
+
+  roundTime(ticks) {
+    return Math.floor(ticks);
   }
 
   stepColor(time) {
