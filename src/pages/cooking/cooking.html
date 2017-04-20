@@ -29,7 +29,7 @@
 <ion-footer>
   <ion-toolbar>
     <p class="center">
-      <strong>Time Elapsed: </strong>{{ticks}} mins | <strong>Time Remaining: </strong> {{totalTime - ticks}} mins
+      <strong>Time Elapsed: </strong>{{ roundTime(ticks) }} mins | <strong>Time Remaining: </strong> {{ roundTime(totalTime - ticks) }} mins
     </p>
     <p class="center">
       <button ion-button color="royal" block [outline]="(totalTime - ticks > 0)" (click)="doneCooking()">Done Cooking!</button>
