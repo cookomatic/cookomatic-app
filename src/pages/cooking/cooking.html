@@ -6,13 +6,13 @@
 
 <ion-content padding>
 
-  <ion-card *ngFor="let item of steps; let i = index" [color]="stepColor(item.estimated_time)">
+  <ion-card *ngFor="let item of steps; let i = index" [color]="stepColor(item.start_time, item.checked)">
 
-    <ion-item [color]="stepColor(item.estimated_time)">
-      <h2>{{item.name}}</h2>
+    <ion-item [color]="stepColor(item.start_time, item.checked)">
+      <font size="4"><b>{{item.name}}</b></font>
     </ion-item>
 
-  
+
 
     <ion-card-content>
       <p>{{item.description}}</p>
@@ -21,9 +21,9 @@
     <ion-row>
       <ion-col>
 
-        <ion-item [color]="stepColor(item.estimated_time)">
+        <ion-item [color]="stepColor(item.start_time, item.checked)">
           <ion-label>Step Complete</ion-label>
-          <ion-checkbox [(ngModel)]="complete-step"color="cooking-done" (click)="item.estimated_time = -1;"></ion-checkbox>
+          <ion-checkbox [(ngModel)]="item.checked" color="cooking-done"></ion-checkbox>
         </ion-item>
 
       </ion-col>
