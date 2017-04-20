@@ -5,10 +5,8 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class Auth {
-  user: any;
 
   constructor(private af: AngularFire, private platform: Platform) {
-    this.user = {};
   }
 
   buildUserObject(authData) {
@@ -18,7 +16,23 @@ export class Auth {
     user['email'] = authData['auth']['email']
     user['photo'] = authData['auth']['photoURL']
     user['provider'] = 'google'
-    user['token'] = authData['auth']['Pd']
+    user['token'] = authData['google']['idToken']
+
+    if (user['token']) {
+      // If this request contained an idToken, persist it in local storage
+      localStorage.setItem('cookomaticIdToken', user['token']);
+
+    } else {
+      // If this request didn't have an idToken, check local storage for one
+      let token = localStorage.getItem('cookomaticIdToken');
+
+      // If we don't have a token, we cannot proceed
+      if (!token) {
+        return null;
+      }
+
+      user['token'] = token;
+    }
 
     return user;
   }
@@ -27,8 +41,14 @@ export class Auth {
     return Observable.create(observer => {
       this.af.auth.subscribe(authData => {
         if (authData) {
-          this.user = this.buildUserObject(authData);
-          observer.next(this.user);
+          let user = this.buildUserObject(authData);
+
+          // If user data isn't present, we cannot proceed
+          if (!user) {
+            observer.error();
+          }
+
+          observer.next(user);
         } else {
           observer.error();
         }
@@ -50,6 +70,7 @@ export class Auth {
   }
 
   logout() {
+    localStorage.clear();
     return this.af.auth.logout();
   }
 }
