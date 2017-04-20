@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, URLSearchParams } from '@angular/http';
+import { Http, RequestOptions, URLSearchParams, Headers } from '@angular/http';
+import { SimpleGlobal } from 'ng2-simple-global';
 import 'rxjs/add/operator/map';
 
 /**
@@ -10,13 +11,24 @@ export class Api {
   url: string = 'https://api.cookomatic.co/v1';
   //  url: string = 'http://localhost:8080/v1';
 
-  constructor(public http: Http) {
+  constructor(
+    public http: Http,
+    private sg: SimpleGlobal
+  ) {
   }
 
-  get(endpoint: string, params?: any, options?: RequestOptions) {
-    if (!options) {
-      options = new RequestOptions();
-    }
+  private buildOptions() {
+    let options = new RequestOptions();
+
+    let headers = new Headers();
+    headers.append('X-AUTHORIZATION', this.sg['user']['token'])
+    options.headers = headers;
+
+    return options;
+  }
+
+  get(endpoint: string, params?: any) {
+    let options = this.buildOptions();
 
     // Support easy query params for GET requests
     if (params) {
@@ -32,19 +44,19 @@ export class Api {
     return this.http.get(this.url + '/' + endpoint, options);
   }
 
-  post(endpoint: string, body: any, options?: RequestOptions) {
-    return this.http.post(this.url + '/' + endpoint, body, options);
+  post(endpoint: string, body: any) {
+    return this.http.post(this.url + '/' + endpoint, body, this.buildOptions());
   }
 
-  put(endpoint: string, body: any, options?: RequestOptions) {
-    return this.http.put(this.url + '/' + endpoint, body, options);
+  put(endpoint: string, body: any) {
+    return this.http.put(this.url + '/' + endpoint, body, this.buildOptions());
   }
 
-  delete(endpoint: string, body: any, options?: RequestOptions) {
-    return this.http.post(this.url + '/' + endpoint, body, options);
+  delete(endpoint: string, body: any) {
+    return this.http.post(this.url + '/' + endpoint, body, this.buildOptions());
   }
 
-  patch(endpoint: string, body: any, options?: RequestOptions) {
-    return this.http.put(this.url + '/' + endpoint, body, options);
+  patch(endpoint: string, body: any) {
+    return this.http.put(this.url + '/' + endpoint, body, this.buildOptions());
   }
 }
