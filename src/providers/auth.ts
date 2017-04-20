@@ -18,6 +18,7 @@ export class Auth {
     user['email'] = authData['auth']['email']
     user['photo'] = authData['auth']['photoURL']
     user['provider'] = 'google'
+    user['token'] = authData['auth']['Pd']
 
     return user;
   }

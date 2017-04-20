@@ -16,7 +16,6 @@ import { DishAdded } from '../pages/dish-added/dish-added';
 import { AngularFireModule } from 'angularfire2';
 import { firebaseConfig } from '../config/firebase';
 
-import { User } from '../providers/user';
 import { Api } from '../providers/api';
 import { Auth } from '../providers/auth';
 import { SimpleGlobal } from 'ng2-simple-global';
@@ -48,7 +47,6 @@ export function entryComponents() {
 export function providers() {
   return [
     Storage,
-    User,
     Api,
     Auth,
     SimpleGlobal,
