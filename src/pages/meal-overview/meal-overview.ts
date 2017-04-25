@@ -65,6 +65,7 @@ export class MealOverview {
         this.sg['schedule'] = schedule;
       }, err => {
         console.error('ERROR', err);
+        this.api.handleError(err);
       })
   }
 

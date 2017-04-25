@@ -51,6 +51,7 @@ export class SelectDish {
         this.dishResults = res;
       }, err => {
         console.error('ERROR', err);
+        this.api.handleError(err);
       })
   }
   /**
