@@ -31,6 +31,7 @@ export class DishInfo {
         this.item = res;
       }, err => {
         console.error('ERROR', err);
+        this.api.handleError(err);
       })
   }
 

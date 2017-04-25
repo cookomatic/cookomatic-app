@@ -3,6 +3,8 @@ import { Http, RequestOptions, URLSearchParams, Headers } from '@angular/http';
 import { SimpleGlobal } from 'ng2-simple-global';
 import 'rxjs/add/operator/map';
 
+import { Auth } from './auth';
+
 /**
  * Api is a generic REST Api handler. Set your API url first.
  */
@@ -13,6 +15,7 @@ export class Api {
 
   constructor(
     public http: Http,
+    private auth: Auth,
     private sg: SimpleGlobal
   ) {
   }
@@ -25,6 +28,14 @@ export class Api {
     options.headers = headers;
 
     return options;
+  }
+
+  handleError(res) {
+    if (res.status == 401) {
+      this.auth.logout().then(() => {
+        window.location.reload();
+      });
+    }
   }
 
   get(endpoint: string, params?: any) {
