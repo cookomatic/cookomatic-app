@@ -6,6 +6,7 @@ import { Api } from '../../providers/api';
 
 
 import { DishInfo } from '../dish-info/dish-info';
+import { AddDish } from '../add-dish/add-dish';
 import { Events } from 'ionic-angular';
 
 @Component({
@@ -61,6 +62,10 @@ export class SelectDish {
     this.navCtrl.push(DishInfo, {
       item_id: item['id']
     });
+  }
+
+  openAddDish() {
+    this.navCtrl.push(AddDish);
   }
 
   dismiss() {
