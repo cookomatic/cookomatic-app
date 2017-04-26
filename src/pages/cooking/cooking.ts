@@ -9,6 +9,10 @@ import { SimpleGlobal } from 'ng2-simple-global';
 // This is sped up for demos. Should be 30000 normally.
 var HALF_MINUTE = 2500
 
+function stepChecked(element, index, array) {
+  return element.checked;
+}
+
 @Component({
   selector: 'page-cooking',
   templateUrl: 'cooking.html'
@@ -16,7 +20,6 @@ var HALF_MINUTE = 2500
 export class Cooking {
   schedule: any;
   steps: any;
-  stepVisibility: any;
   totalTime: any;
   timer: any;
   ticks: any;
@@ -30,9 +33,6 @@ export class Cooking {
   ) {
     // Get schedule from Meal Overview
     this.steps = this.sg['schedule']['steps'];
-
-    // Set initial step visibility values
-    this.stepVisibility = new Array(this.steps.length).fill(false);
 
     // Initialize timer
     this.timer = Observable.timer(0, HALF_MINUTE);
@@ -62,6 +62,15 @@ export class Cooking {
 
   roundTime(ticks) {
     return Math.floor(ticks);
+  }
+
+  cookingInProgress() {
+    // If any step is still in progress, keep outline of button
+    if (this.steps.every(stepChecked) || this.totalTime - this.ticks <= 0) {
+      return false;
+    }
+
+    return true;
   }
 
   stepColor(time, checked) {
