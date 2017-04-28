@@ -3,7 +3,6 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Events } from 'ionic-angular';
 import { MainPage } from '../../pages/pages';import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
-import { MyApp } from './app.component';
 
 // Import ionic2-rating module
 import { Ionic2RatingModule } from 'ionic2-rating';
@@ -12,16 +11,16 @@ import { SimpleGlobal } from 'ng2-simple-global';
 
 @NgModule({
   declarations: [
-    MyApp,
+    Component,
     MainPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(Component),
     Ionic2RatingModule // Put ionic2-rating module here
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    Component,
     MainPage
   ],
   providers: []
