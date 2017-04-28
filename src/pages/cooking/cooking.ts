@@ -84,22 +84,6 @@ export class Cooking {
 
   doneCooking() {
     this.navCtrl.push(MealComplete);
-    createCookEvent();
   }
-  
-  createCookEvent() {
-    var dish_ids = this.sg['dishes'].map(function(dish) {
-      return dish['id']
-    });
-    
-    let d = new Date()
-    
-    let seq = this.api.post('cook_event', {
-      'user': this.user['email'],
-      'time': d.getTime();
-    });
 
-    seq
-      .map(res => res.json())
-  }
 }
