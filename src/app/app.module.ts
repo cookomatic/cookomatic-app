@@ -19,6 +19,7 @@ import { firebaseConfig } from '../config/firebase';
 import { Api } from '../providers/api';
 import { Auth } from '../providers/auth';
 import { SimpleGlobal } from 'ng2-simple-global';
+import { Ionic2RatingModule } from 'ionic2-rating';
 
 /**
  * The Pages array lists all of the pages we want to use in our app.
@@ -50,6 +51,7 @@ export function providers() {
     Api,
     Auth,
     SimpleGlobal,
+    Ionic2RatingModule,
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ];
