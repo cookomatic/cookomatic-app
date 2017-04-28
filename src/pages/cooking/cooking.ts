@@ -92,14 +92,12 @@ export class Cooking {
       return dish['id']
     });
     
-    var datetime = new DateTime().now();
+    let d = new Date()
     
     let seq = this.api.post('cook_event', {
-      'user': this.user['name'],
-      'time': datetime,
-      'time_taken': [120, 240, 120],
-      'rating': 4,
-      'review_text': "TEST REVIEW TEXT" });
+      'user': this.user['email'],
+      'time': d.getTime();
+    });
 
     seq
       .map(res => res.json())
