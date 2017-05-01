@@ -13,23 +13,23 @@
   <ion-grid>
     <ion-row wrap>
 
-      <ion-col width-50>
-        <ion-card (click)="getItems()">
-          <img src="/assets/img/appicon.png" />
+      <ion-col width-50 *ngFor="let item of suggestedDishes" >
+        <ion-card (click)="openItem(item)">
+          <img src={{item.img_thumb}}/>
           <ion-card-content>
             <ion-icon class="large-icon" name="add-circle"></ion-icon>
-            <p>Yummy Sloth</p>
+            <p>{{item.name}}</p>
           </ion-card-content>
-        </ion-card>
-      </ion-col>
+          <ion-row>
+            <ion-col>
 
-      <ion-col width-50>
-        <ion-card (click)="getItems()">
-          <img src="/assets/img/appicon.png" />
-          <ion-card-content>
-            <ion-icon class="large-icon" name="add-circle"></ion-icon>
-            <p>Yummy Sloth</p>
-          </ion-card-content>
+              <ion-item>
+                <ion-label>Add</ion-label>
+                <ion-checkbox [(ngModel)]="item.checked" color="secondary"></ion-checkbox>
+              </ion-item>
+
+            </ion-col>
+          </ion-row>
         </ion-card>
       </ion-col>
 
