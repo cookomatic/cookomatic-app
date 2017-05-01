@@ -13,8 +13,9 @@
       <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
     </svg>
 
-  <rating [(ngModel)]="rate"></rating>
-</ion-content>
+    <rating [(ngModel)]="rate" (ngModelChange)="rateMeal($event)"></rating>
+  </div>
+<!-- </ion-content> -->
 
 <ion-footer>
   <ion-toolbar>
