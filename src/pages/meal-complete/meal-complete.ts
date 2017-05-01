@@ -17,7 +17,7 @@ import { SimpleGlobal } from 'ng2-simple-global';
   ],
   imports: [
     IonicModule.forRoot(Component),
-    Ionic2RatingModule // Put ionic2-rating module here
+    Ionic2RatingModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
