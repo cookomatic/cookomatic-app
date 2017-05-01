@@ -56,7 +56,8 @@ export class MealComplete {
       })
   }
 
-  reviewMeal(review) {
+  reviewMeal(event) {
+    let review = event['srcElement']['value'];
     let seq = this.api.patch('cook_event', {
       'id': this.cook_event_id,
       'review': review

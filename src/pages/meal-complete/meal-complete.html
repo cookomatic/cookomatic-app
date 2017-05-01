@@ -14,6 +14,7 @@
     </svg>
 
     <rating [(ngModel)]="rate" (ngModelChange)="rateMeal($event)"></rating>
+    <ion-textarea (blur)="reviewMeal($event)" placeholder="Leave a review here..."></ion-textarea>
   </div>
 
 <ion-footer>
