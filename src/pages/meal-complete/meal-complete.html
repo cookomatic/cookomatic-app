@@ -14,13 +14,8 @@
     </svg>
 
   <rating [(ngModel)]="rate"
-    readOnly="false" // default value, so it can be ommited
-    max="5" // default value
-    emptyStarIconName="star-outline" // default value
-    halfStarIconName="star-half" // default value
-    starIconName="star" // default value
-    nullable="false" // default value
     ngModelChange)="onModelChange($event)">
+  </rating>
 
 
 <ion-footer>
