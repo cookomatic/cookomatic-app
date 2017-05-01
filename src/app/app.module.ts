@@ -51,7 +51,6 @@ export function providers() {
     Api,
     Auth,
     SimpleGlobal,
-    Ionic2RatingModule,
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ];
@@ -61,7 +60,8 @@ export function providers() {
   declarations: declarations(),
   imports: [
     IonicModule.forRoot(Cookomatic),
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    Ionic2RatingModule
   ],
   bootstrap: [IonicApp],
   entryComponents: entryComponents(),
