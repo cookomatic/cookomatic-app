@@ -26,7 +26,6 @@ export class MealComplete {
 
   createCookEvent() {
     let d = new Date();
-    console.log(this.sg['currentMeal']);
 
     let seq = this.api.post('cook_event', {
       'meal': this.sg['currentMeal'],
