@@ -28,6 +28,7 @@ export class MealComplete {
     let d = new Date();
 
     let seq = this.api.post('cook_event', {
+      'meal': this.sg['currentMeal'],
       'time': Math.ceil(d.getTime() / 1000)
     });
 

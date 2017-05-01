@@ -19,6 +19,7 @@ import { firebaseConfig } from '../config/firebase';
 import { Api } from '../providers/api';
 import { Auth } from '../providers/auth';
 import { SimpleGlobal } from 'ng2-simple-global';
+import { Ionic2RatingModule } from 'ionic2-rating';
 
 /**
  * The Pages array lists all of the pages we want to use in our app.
@@ -59,7 +60,8 @@ export function providers() {
   declarations: declarations(),
   imports: [
     IonicModule.forRoot(Cookomatic),
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    Ionic2RatingModule
   ],
   bootstrap: [IonicApp],
   entryComponents: entryComponents(),

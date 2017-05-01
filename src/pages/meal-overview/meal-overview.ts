@@ -54,6 +54,7 @@ export class MealOverview {
     seq
       .map(res => res.json())
       .subscribe(res => {
+        this.sg['currentMeal'] = res['id'];
         let schedule = res['schedule'];
 
         // If schedule is null, set it as an empty object instead

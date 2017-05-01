@@ -24,6 +24,7 @@
     "firebase": "^3.6.9",
     "ionic-angular": "2.0.1",
     "ionic-native": "2.4.1",
+    "ionic2-rating": "^1.2.2",
     "ionicons": "3.0.0",
     "ng2-simple-global": "^1.2.3",
     "rxjs": "5.0.0-beta.12",
