@@ -85,5 +85,4 @@ export class Cooking {
   doneCooking() {
     this.navCtrl.push(MealComplete);
   }
-
 }
