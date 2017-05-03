@@ -22,6 +22,7 @@ export class Cooking {
   steps: any;
   totalTime: any;
   timer: any;
+  timerSub: any;
   ticks: any;
 
   constructor (
@@ -40,10 +41,10 @@ export class Cooking {
     this.ticks = 0;
 
     // Start timer ticking
-    let timer_sub = this.timer.subscribe(num_ticks => {
+    this.timerSub = this.timer.subscribe(num_ticks => {
       this.ticks = num_ticks / 2;
       if (this.ticks >= this.totalTime){
-        this.cookingComplete(timer_sub);
+        this.cookingComplete();
       }
     });
 
@@ -86,9 +87,9 @@ export class Cooking {
     }
   }
 
-  cookingComplete(timer_sub) {
+  cookingComplete() {
     // Stop timer
-    timer_sub.unsubscribe();
+    this.timerSub.unsubscribe();
 
     // Notify user that cooking is done
     let toast = this.toastCtrl.create({
@@ -100,6 +101,8 @@ export class Cooking {
   }
 
   doneCooking() {
+    // Stop timer
+    this.timerSub.unsubscribe();
     this.navCtrl.push(MealComplete);
   }
 }
