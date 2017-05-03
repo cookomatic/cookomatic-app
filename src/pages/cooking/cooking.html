@@ -12,8 +12,6 @@
       <font size="4"><b>{{item.name}}</b></font>
     </ion-item>
 
-
-
     <ion-card-content>
       <p>{{item.description}}</p>
     </ion-card-content>
@@ -39,7 +37,7 @@
       <strong>Elapsed: </strong>{{ roundTime(ticks) }} mins | <strong>Remaining: </strong> {{ roundTime(totalTime - ticks) }} mins
     </p>
     <p class="center" id="doneCooking">
-      <button ion-button color="royal" block [outline]="cookingInProgress()" (click)="doneCooking()">Done Cooking!</button>
+      <button ion-button color="royal" block [outline]="cookingInProgress()" (click)="doneCooking()" style="font-size:12px">Done Cooking!</button>
     </p>
   </ion-toolbar>
 </ion-footer>
