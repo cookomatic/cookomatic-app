@@ -36,7 +36,7 @@
 <ion-footer>
   <ion-toolbar>
     <p class="center">
-      <strong>Time Elapsed: </strong>{{ roundTime(ticks) }} mins | <strong>Time Remaining: </strong> {{ roundTime(totalTime - ticks) }} mins
+      <strong>Elapsed: </strong>{{ roundTime(ticks) }} mins | <strong>Remaining: </strong> {{ roundTime(totalTime - ticks) }} mins
     </p>
     <p class="center" id="doneCooking">
       <button ion-button color="royal" block [outline]="cookingInProgress()" (click)="doneCooking()">Done Cooking!</button>
