@@ -6,6 +6,7 @@ import { Auth } from '../providers/auth';
 
 import { FirstRunPage } from '../pages/pages';
 import { WelcomePage } from '../pages/welcome/welcome';
+import { AddDish } from '../pages/add-dish/add-dish';
 import { SelectDish } from '../pages/select-dish/select-dish';
 import { MealComplete } from '../pages/meal-complete/meal-complete';
 import { DishAdded } from '../pages/dish-added/dish-added';
@@ -25,6 +26,7 @@ export class Cookomatic {
   pages: any[] = [
     { title: 'Welcome', component: WelcomePage },
     { title: 'Meal Overview', component: MealOverview },
+    { title: 'Add Dish', component: AddDish },
     { title: 'Select Dish', component: SelectDish },
     { title: 'Meal Complete', component: MealComplete },
     { title: 'Dish Added', component: DishAdded },
