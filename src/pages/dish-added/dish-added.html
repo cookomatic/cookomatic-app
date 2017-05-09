@@ -17,19 +17,8 @@
         <ion-card (click)="openItem(item)">
           <img src={{item.img_thumb}}/>
           <ion-card-content>
-            <ion-icon class="large-icon" name="add-circle"></ion-icon>
             <p>{{item.name}}</p>
           </ion-card-content>
-          <ion-row>
-            <ion-col>
-
-              <ion-item>
-                <ion-label>Add</ion-label>
-                <ion-checkbox [(ngModel)]="item.checked" color="secondary"></ion-checkbox>
-              </ion-item>
-
-            </ion-col>
-          </ion-row>
         </ion-card>
       </ion-col>
 

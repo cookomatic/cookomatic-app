@@ -27,22 +27,15 @@ export class DishAdded {
   }
 
   getDishes() {
-    this.suggestedDishes = this.mockedUp();
-    // let seq = this.api.get('dish/search?search=' + val)
-    // seq
-    //   .map(res => res.json())
-    //   .subscribe(res => {
-    //     this.suggestedDishes = res;
-    //   }, err => {
-    //     console.error('ERROR', err);
-    //     this.api.handleError(err);
-    //   })
-  }
-
-  mockedUp() {
-    let mocked: any[] = [{"id": "6150969767231488", "img":"https://lh3.googleusercontent.com/JdjueIqXrBa1oMXJ3DNpAGGVFeJjubWlxDgl01opnk8iATcHi1JVb-KGN64lQtgpoDCVFnEMPzAFB_4tbsIcUiwhuBgujSk", "img_thumb": "https://lh3.googleusercontent.com/JdjueIqXrBa1oMXJ3DNpAGGVFeJjubWlxDgl01opnk8iATcHi1JVb-KGN64lQtgpoDCVFnEMPzAFB_4tbsIcUiwhuBgujSk=s256-c", "name": "Sweet Potato Chips"}, {"id": "4600107274076160", "img": "https://lh3.googleusercontent.com/iWeQ3hiz5rVB7xVwCIY2snwx5nMy24jySGvaoU-9KajE8XW83-7blJNZfbwduFStXFaV9sNtWvxtkOfkJpI18pGWIoBK6QGd", "img_thumb": "https://lh3.googleusercontent.com/iWeQ3hiz5rVB7xVwCIY2snwx5nMy24jySGvaoU-9KajE8XW83-7blJNZfbwduFStXFaV9sNtWvxtkOfkJpI18pGWIoBK6QGd=s256-c", "name": "Pancakes"} ];
-
-    return mocked
+    let seq = this.api.get('dish/suggested')
+    seq
+      .map(res => res.json())
+      .subscribe(res => {
+        this.suggestedDishes = res;
+      }, err => {
+        console.error('ERROR', err);
+        this.api.handleError(err);
+      })
   }
 
   checkIfAdded(dish) {

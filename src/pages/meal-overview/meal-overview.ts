@@ -46,6 +46,8 @@ export class MealOverview {
   }
 
   createMeal() {
+    this.sg['currentMeal'] = null;
+
     var dish_ids = this.sg['dishes'].map(function(dish) {
       return dish['id']
     });
