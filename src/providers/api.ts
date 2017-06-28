@@ -10,7 +10,7 @@ import { Auth } from './auth';
  */
 @Injectable()
 export class Api {
-  url: string = 'https://api.cookomatic.co/v1';
+  url: string = 'https://api-dot-project.cookomatic.appspot.com/v1';
   //  url: string = 'http://localhost:8080/v1';
 
   constructor(
